@@ -1,0 +1,644 @@
+/* Import fonts */
+@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+
+
+/* BASIC THEME CONFIGURATION */
+
+body {
+    color: #797979;
+    background-image: url("https://www.beprime.com/wp-content/uploads/2022/05/pexels-content-pixie-2736499.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ruda', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+}
+
+ul li {
+    list-style: none;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+#container {
+    width: 100%;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100vh;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 8em;
+    margin: 0
+}
+
+#sidebar-toggle-box > div {
+    margin-top: 0.4em;
+}
+
+.intro-page-wrapper {
+    width: 40%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 2%;
+    top: 10%;
+}
+
+
+.intro-page-wrapper h3 {
+    font-size: 3em;
+}
+
+.home-page-btns {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.signup {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5vw;
+    margin-top: 8vh;
+    padding: 2vh 3vh;
+    width: 37%;
+    height: 20%;
+    text-align: center;
+    border-radius: 4%;
+    border: #424a5d 1px solid;
+    background: rgba(179, 158, 137, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0.3vw 0.3vw 1.2vw rgba(0, 0, 0, 0.3);
+}
+
+#quote-container {
+    width: 50%;
+    font-size: 20px;
+    color: white;
+    position: relative;
+    top: 9%;
+    margin-left: 1.7em;
+    margin-bottom: 1.2em;
+    box-shadow: #282e36 0 0 10px;
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+}
+
+/*Helpers*/
+
+.centered {
+    text-align: center;
+}
+
+.mt {
+    margin-top: 25px;
+}
+
+.mb {
+    margin-bottom: 25px;
+}
+
+
+.about, .datetime {
+    color: #f2f2f2;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #5d5250;
+    padding: 5px 15px;
+    margin-right: 15px;
+    background: #756b6a;
+    margin-top: 0.4em;
+    float: right;
+}
+
+.about-link {
+    text-decoration: none;
+    color: white;
+}
+
+/*sidebar navigation*/
+
+#sidebar {
+    width: 16vw;
+    height: 100%;
+    position: fixed;
+    background: #756a6a;
+    top: 0;
+    bottom: 0;
+}
+
+#sidebar h5 {
+    color: #f2f2f2;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+#sidebar ul li {
+    position: relative;
+}
+
+#sidebar .sub-menu > .sub li {
+    padding-left: 32px;
+}
+
+#sidebar .sub-menu > .sub li:last-child {
+    padding-bottom: 10px;
+}
+
+
+ul.sidebar-menu, ul.sidebar-menu li ul.sub {
+    margin: -2px 0 0;
+    padding: 0;
+}
+
+ul.sidebar-menu {
+    margin-top: 75px;
+}
+
+ul.sidebar-menu li {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+ul.sidebar-menu li.sub-menu {
+    line-height: 15px;
+}
+
+ul.sidebar-menu li a span {
+    display: inline-block;
+}
+
+ul.sidebar-menu li a {
+    color: #aeb2b7;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0 15px 10px;
+    font-size: 12px;
+    outline: none;
+}
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+    background: #5d5250;
+    color: #fff;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+
+ul.sidebar-menu li a i {
+    font-size: 15px;
+    padding-right: 6px;
+}
+
+ul.sidebar-menu li a:hover i, ul.sidebar-menu li a:focus i {
+    color: #fff;
+}
+
+ul.sidebar-menu li a.active i {
+    color: #fff;
+}
+
+
+/* MAIN CONTENT CONFIGURATION */
+
+.main-content {
+    height: 100%;
+}
+
+.header, .footer {
+    min-height: 60px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.black-bg {
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid #756a6a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+}
+
+a.logo {
+    font-size: 2em;
+    color: #ffffff;
+    float: left;
+    margin-top: 0.6em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+a.logo b {
+    font-weight: 900;
+}
+
+a.logo:hover, a.logo:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+
+/*--sidebar toggle---*/
+
+.sidebar-toggle-box {
+    float: left;
+    padding-right: 15px;
+    margin-top: 10px;
+}
+
+.sidebar-toggle-box .fa-bars {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+}
+
+
+label {
+    font-weight: 400;
+}
+
+/*footer*/
+.site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(224, 217, 210, 0.5);
+    border-top: 1px solid #756a6a;
+    color: #fff;
+    backdrop-filter: blur(4px);
+}
+
+body > footer > div > p {
+    margin-top: 14px;
+}
+
+.sign-in-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.sign-in-form form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: black 1px solid;
+}
+
+div.about-info {
+    margin: 8em auto;
+    padding-top: 1em;
+    position: relative;
+    padding-bottom: 2em;
+    text-align: center;
+    max-width: 70%;
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border: #5d5250 1px solid;
+    box-shadow: #282e36 0 0 10px;
+}
+
+
+.add-task-form-wrapper,
+.edit-task-form-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--todo list*/
+.todo-container,
+.task-details,
+.calendar-container {
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: #282e36 0 0 10px;
+    margin: 10em auto;
+    padding: 10px;
+    max-width: 70%;
+    height: fit-content;
+    position: relative;
+}
+
+.todo-container h2, form {
+    text-align: center;
+}
+
+.todo-container form {
+    margin-bottom: 3vh;
+
+}
+
+.todo-container form input[type="text"] {
+    width: 50%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.todo-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 4em;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /*border-bottom: 1px solid #756a6a;*/
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.task-item:hover {
+    background: rgba(224, 217, 210, 0.5);
+    border-radius: 10px;
+    box-shadow: #282e36 0 0 10px;
+    backdrop-filter: blur(4px);
+    transform: scale(1.05);
+}
+
+
+.task-title {
+    width: 20%;
+}
+
+.checkbox-container {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+button {
+    cursor: pointer;
+}
+
+.task-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-task-button,
+.delete-task-button,
+.logout-button,
+.details-task-button,
+.go-back-button,
+.add-task-button,
+.search-button {
+    margin-left: 10px;
+    padding: 6px 10px;
+    color: white;
+    border: 1px solid #5d5250;
+    background: #756b6a;
+    border-radius: 4px;
+}
+
+
+.edit-task-form-wrapper > div > form > div {
+    margin-top: 16px;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+.delete-form-wrapper,
+.logout-form-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-form,
+.logout-form {
+    position: relative;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    text-align: center;
+    width: 50%;
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border: #5d5250 1px solid;
+    box-shadow: #282e36 0 0 10px;
+}
+
+.delete-form-wrapper > form > div.task-buttons {
+    justify-content: center;
+}
+
+
+/*--owl-forms--*/
+.owl-wrapper {
+    height: 70vh;
+    width: 70vw;
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border: #5d5250 1px solid;
+    box-shadow: #282e36 0 0 10px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 15%;
+    top: 15%;
+}
+
+
+.owl {
+    margin: auto;
+    width: 116px;
+    height: 92px;
+    background-image: url(https://cdn.readme.io/public/img/login/face.png);
+    position: relative;
+}
+
+.hand {
+    width: 34px;
+    height: 34px;
+    border-radius: 40px;
+    background-color: #472d20;
+    transform: scaleY(0.6);
+    position: absolute;
+    left: -10px;
+    bottom: -8px;
+    transition: 0.3s ease-out;
+}
+
+.hand.password {
+    width: 34px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #472d20;
+    transform: translateX(25px) translateY(-19px) scale(1.1) rotate(-60deg);
+}
+
+.hand-r {
+    left: 100px;
+}
+
+.hand-r.password {
+    width: 34px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #472d20;
+    transform: translateX(-42px) translateY(-19px) scale(1.1) rotate(60deg);
+}
+
+.arms {
+    position: absolute;
+    top: 58px;
+    height: 41px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.arm {
+    width: 40px;
+    height: 65px;
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    transition: 0.3s ease-out;
+}
+
+.arm.password {
+    transform: translateX(40px) translateY(-40px);
+}
+
+.arm-r {
+    left: 158px;
+    transform: scaleX(-1);
+}
+
+.arm-r.password {
+    transform: translateX(-40px) translateY(-40px) scaleX(-1);
+}
+
+.form {
+    margin: auto;
+    margin-top: -9px;
+    padding: 30px;
+    background-color: white;
+    width: 175px;
+}
+
+.control {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.control label {
+    position: absolute;
+    font-size: 16px;
+    top: 11px;
+    left: 9px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.control input {
+    padding: 9px 6px 9px 30px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+}
+
+
+/*errors*/
+.errorlist {
+    padding-left: 1.2em;
+}
+
+.errorlist li {
+    list-style-type: circle;
+    padding-bottom: 1.2em;
+}
+
+
+/*calendar*/
+
+#calendar {
+    max-width: 80%;
+
+    position: relative;
+}
+
+#calendar-form-wrapper {
+    position: relative;
+    top: -70em;
+    height: 40vh;
+    width: 40vw;
+    margin: auto;
+    background: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: #282e36 0 0 10px;
+}
+
+#calendar-form-wrapper form input, select{
+    font-size: 24px;
+    width: 50%;
+    padding: 6px;
+}
+
+.hidden-form {
+    display: none;
+}
+
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    min-height: 5em;
+    position: relative;
+}
+
