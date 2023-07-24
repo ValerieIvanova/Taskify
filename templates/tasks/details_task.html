@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="task-details content-pos">
+        <h2><b>Task:</b> {{ task.title }}</h2>
+        <p><b>Description:</b> {{ task.description }}</p>
+        <p><b>Category:</b> {{ task.category }}</p>
+        <p><b>Created On:</b> {{ task.created_on }}</p>
+        <p><b>Start Date:</b> {{ task.start_date }}</p>
+        <p><b>Due Date:</b> {{ task.due_date }}</p>
+        <p><b>Priority:</b> {{ task.priority }}</p>
+        <p><b>Status:</b> {{ task.status }}</p>
+        <p><b>Reminder:</b> {{ task.reminder }}</p>
+        <div class="task-buttons">
+            <button class="mt mb"><a href="{% url 'dashboard' %}" class="go-back-button">Go Back</a></button>
+            <button class="mt mb"><a href="{% url 'edit_task' task.pk %}" class="edit-task-button">Edit</a></button>
+            <button class="mt mb"><a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a></button>
+        </div>
+
+    </div>
+{% endblock %}

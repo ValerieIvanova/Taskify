@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+
+    <div class="owl-wrapper">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="owl">
+                <div class="hand"></div>
+                <div class="hand hand-r"></div>
+                <div class="arms">
+                    <div class="arm"></div>
+                    <div class="arm arm-r"></div>
+                </div>
+            </div>
+            <div class="form">
+            <p>{{ form.non_field_errors }}</p>
+
+                <div class="control">
+                    {{ form.username }}
+                </div>
+                <div class="control">
+                    {{ form.password }}
+
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+                <button>Login</button>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{% static 'assets/js/owl-animation.js' %}"></script>
+{% endblock %}

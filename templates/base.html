@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TASKIFY.</title>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+</head>
+
+<body class="overlay">
+
+<section id="container">
+    <header class="header black-bg">
+        <div>
+            {% if request.user.is_authenticated %}
+                <div id="sidebar-toggle-box" class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right"
+                         data-original-title="Toggle Navigation"></div>
+                </div>
+            {% endif %}
+            <!--logo start-->
+            <a href="{% url 'index' %}" class="logo"><b>TASKIFY.</b></a>
+            <!--logo end-->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                {% if not request.user.is_authenticated %}
+                    <div class="about"><a class="about-link" href="{% url 'about' %}">About</a></div>
+                {% endif %}
+                <div id="datetime" class="datetime"></div>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    {% if request.user.is_authenticated %}
+        <!--sidebar start-->
+        <aside id="sidebar">
+            <div class="nav-collapse">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+                    <p class="centered"><a href="profile.html"><img
+                            src="{% static 'assets/img/ui-sam.jpg' %}"
+                            class="img-circle"
+                            width="60"></a></p>
+                    <h5 class="centered">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+
+                    <li class="mt">
+                        <a href="{% url 'dashboard' %}">
+                            <i class="fa fa-columns"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="{% url 'task_calendar' %}">
+                            <i class="fa fa-desktop"></i>
+                            <span>Task Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="">
+                            <i class="fa fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="{% url 'about' %}">
+                            <i class="fa fa-address-card"></i>
+                            <span>About</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="{% url 'logout' %}">
+                            <i class="fa fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+    {% endif %}
+</section>
+
+<main class="main-content">
+    {% block content %}
+    {% endblock %}
+</main>
+
+{% if request.user.is_authenticated %}
+    <footer class="site-footer">
+        <div class="text-center">
+            <p>&copy; 2023 - TASKIFY. All rights reserved.</p>
+        </div>
+    </footer>
+{% endif %}
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- External js files -->
+<script src={% static 'assets/js/side-bar-toggle.js' %}></script>
+<script src={% static 'assets/js/datetime.js' %}></script>
+<script src="{% static 'assets/js/calendar-script.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="add-task-form-wrapper">
+        <div class="add-task-form-container">
+            <form
+                    action="{% url 'add_task' %}"
+                    method="post"
+                    style="display: flex;flex-direction: column;">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" value="Add" class="mt mb"><a class="add-task-button">Add</a></button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

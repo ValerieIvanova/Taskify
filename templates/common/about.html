@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="about-page-wrapper">
+
+        <div class="about-info content-pos">
+            <div>
+                <h2>Our Story</h2>
+                <p>Taskify. is a personal project I started in 2023 with a vision to simplify and organize our busy
+                    lives.
+                    As
+                    a
+                    passionate individual, I wanted to create a tool that brings sunshine to your daily tasks and helps
+                    you
+                    stay on
+                    top of everything effortlessly.</p>
+            </div>
+
+            <div>
+                <h2>Why Choose TASKIFY</h2>
+                <p>I believe in the power of simplicity. My website provides a user-friendly and intuitive platform to
+                    manage your
+                    tasks and to-do lists effectively. With a focus on sunny vibes and positive productivity, I aim to
+                    make
+                    your day
+                    brighter and more productive.</p>
+            </div>
+
+            <div>
+                <h2>Features and Benefits</h2>
+                <p>Taskify offers a range of features designed to make your life easier and more organized:</p>
+
+                <ul>
+                    <li>Create and manage tasks with ease.</li>
+                    <li>Set due dates and reminders for important deadlines.</li>
+                    <li>Organize tasks into categories.</li>
+                    <li>Stay motivated with cheerful notifications.</li>
+                    <li>Access your tasks anytime, anywhere, on any device.</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>User Testimonials</h2>
+                <blockquote>
+                    <p>"Taskify has brought sunshine into my daily routine! It's like having a personal cheerleader for
+                        my
+                        productivity."</p>
+                    <footer>- Sarah Thompson</footer>
+                </blockquote>
+
+                <blockquote>
+                    <p>"I'm so glad I found Taskify! It made my life easier, and the aesthetic design adds a touch of
+                        calmness and
+                        positivity to my tasks."</p>
+                    <footer>- Mark Johnson</footer>
+                </blockquote>
+            </div>
+
+            {% if not user.is_authenticated %}
+                <div>
+                    <h2>Get Started</h2>
+                    <p>Ready to bring sunny vibes to your task management? Sign up for TASKIFY today and experience the
+                        joy
+                        of
+                        organized
+                        productivity!</p>
+                    <div class="home-page-btns">
+                        <a href="{% url 'register' %}" class="signup">Get Started</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

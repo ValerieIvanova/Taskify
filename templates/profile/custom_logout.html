@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="logout-form-wrapper">
+        <form class="logout-form content-pos" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <p>Are you sure you want to log out?"</p>
+
+            <div class="task-buttons">
+                <input type="submit" name="confirm-logout" class="logout-button" value="Logout">
+                <a type="submit" href="{% url 'dashboard' %}" class="go-back-button">Go Back</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

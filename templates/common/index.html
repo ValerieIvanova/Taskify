@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+
+    <section class="hero">
+    {% if not user.is_authenticated %}
+        <div class="intro-page-wrapper">
+            <h2>Taskify.</h2>
+            <h3>Your personal task whisperer <br> that turns chaos into pure Task-Nirvana!</h3>
+            <div class="home-page-btns">
+                <a href="{% url 'login' %}" class="signup">Get Started</a>
+            </div>
+        </div>
+            <div id="quote-container">
+                <p>{{ random_quote }}</p>
+            </div>
+    {% endif %}
+    </section>
+
+
+
+{% endblock %}

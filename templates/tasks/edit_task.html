@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="edit-task-form-wrapper">
+        <div class="edit-task-form-container">
+            <form
+                    action="{% url 'edit_task' task.pk %}"
+                    method="post"
+                    style="display: flex;flex-direction: column;">
+                {% csrf_token %}
+                {{ form }}
+                <div class="task-buttons">
+                    <button type="submit" class="edit-task-button">Save</button>
+                    <a href="{% url 'details_task' task.pk %}" class="go-back-button">Go Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

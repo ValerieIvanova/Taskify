@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="todo-container content-pos">
+    <h2>TO-DO LIST</h2>
+    <form method="get">
+        <input type="text" name="search-area" value="{{ search_input }}">
+        <input type="submit" value="Search" class="search-button">
+    </form>
+        <ul class="todo-list">
+            {% for task in tasks %}
+                <li>
+                    <div class="task-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox">
+                            <label for="checkbox-{{ task.id }}" class="checkbox-label"></label>
+                        </div>
+                        <span class="task-title">{{ task.title }}</span>
+                        <span class="task-due-date">Due Date:
+                            {% if task.due_date %}
+                            {{ task.due_date }}
+                            {% else %}
+                            No due date
+                            {% endif %}
+                        </span>
+                        <div class="task-buttons">
+                            <a href="{% url 'details_task' task.pk %}" class="details-task-button">Details</a>
+                        </div>
+                    </div>
+                </li>
+                {% empty %}
+                <h3>No Tasks. Enjoy some free time!</h3>
+            {% endfor %}
+            <div class="mt mb"><a class="add-task-button" href="{% url 'add_task' %}">Add New Task</a></div>
+        </ul>
+    </div>
+{% endblock %}
