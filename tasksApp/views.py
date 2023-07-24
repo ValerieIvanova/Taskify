@@ -1,0 +1,107 @@
+from datetime import datetime
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+from taskify.tasksApp.forms import TaskAddForm, TaskEditForm
+from taskify.tasksApp.models import Task, Category
+
+
+class Dashboard(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = 'tasks/dashboard.html'
+    context_object_name = 'tasks'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+
+        search_input = self.request.GET.get('search-area') or ''
+        if search_input:
+            context['tasks'] = context['tasks'].filter(
+                title__icontains=search_input
+            )
+        context['search_input'] = search_input
+        return context
+
+
+class TaskAdd(LoginRequiredMixin, CreateView):
+    model = Task
+    form_class = TaskAddForm
+    template_name = 'tasks/add_task_dashboard.html'
+    success_url = reverse_lazy('dashboard')
+
+    def get_template_names(self):
+        if 'calendar' in self.request.path:
+            return ['task-calendar.html']
+        return super().get_template_names()
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+
+        if not form.cleaned_data['due_date']:
+            form.instance.due_date = datetime.today()
+        return super(TaskAdd, self).form_valid(form)
+
+    def get_success_url(self):
+        origin_url = self.request.POST.get('origin_url')
+        if origin_url and 'calendar' in origin_url:
+            return reverse_lazy('task_calendar')
+        return reverse_lazy('dashboard')
+
+
+class TaskDetails(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'tasks/details_task.html'
+    context_object_name = 'task'
+
+
+class TaskEdit(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskEditForm
+    template_name = 'tasks/edit_task.html'
+
+    def get_success_url(self):
+        return reverse_lazy('details_task', kwargs={'pk': self.object.pk})
+
+
+class TaskDelete(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = 'tasks/delete_task.html'
+    success_url = reverse_lazy('dashboard')
+    context_object_name = 'task'
+
+
+@login_required
+def task_calendar(request):
+    categories = Category.objects.all()
+    form = TaskAddForm(initial={'origin_url': request.path})
+    context = {
+        'categories': categories,
+        'form': form
+    }
+    return render(request, 'tasks/task-calendar.html', context)
+
+
+@login_required
+def task_list(request):
+    tasks = Task.objects.filter(user=request.user)
+    tasks_list = []
+
+    for task in tasks:
+        start_date_iso = task.start_date.isoformat() if task.start_date else None
+        due_date_iso = task.due_date.isoformat() if task.due_date else None
+        tasks_list.append({
+            'id': task.pk,
+            'title': task.title,
+            'start': start_date_iso,
+            'end': due_date_iso,
+            'category': task.category.name,
+            'category_color': task.category.color,
+        })
+    return JsonResponse(tasks_list, safe=False)
+
