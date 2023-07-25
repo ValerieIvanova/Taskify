@@ -7,5 +7,6 @@ INSPIRATIONAL_QUOTES = [
     'The best way to predict the future is to create it. - Elon Musk',
     'It does not matter how slowly you go as long as you do not stop. - Confucius',
     'The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt',
-    "Ready, Set, Organize! Because Life's Too Short for Scrambled Eggs! - Chat GPT"
+    "Ready, Set, Organize! Because Life's Too Short for Scrambled Eggs! - Chat GPT",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill"
 ]
