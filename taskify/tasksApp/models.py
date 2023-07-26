@@ -7,6 +7,8 @@ from django.db import models
 from colorfield.fields import ColorField
 from django.utils import timezone
 
+from taskify.tasksApp.validators import date_in_the_past
+
 UserModel = get_user_model()
 
 
@@ -65,7 +67,9 @@ class Task(models.Model):
     start_date = models.DateField(
         null=False,
         blank=False,
-        default=timezone.now,
+        validators=[
+            date_in_the_past
+        ]
     )
 
     due_date = models.DateField(

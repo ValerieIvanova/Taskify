@@ -1,9 +1,20 @@
 from django import forms
+from django.utils import timezone
 
 from taskify.tasksApp.models import Task
 
 
 class TaskBaseForm(forms.ModelForm):
+    start_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        input_formats=['%d.%m.%Y']
+    )
+
+    due_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        input_formats=['%d.%m.%Y']
+    )
+
     class Meta:
         model = Task
         fields = [
@@ -17,8 +28,6 @@ class TaskBaseForm(forms.ModelForm):
             'origin_url',
         ]
         widgets = {
-            'start_date': forms.DateTimeInput(attrs={'type': 'date', 'format': 'd-m-Y'}),
-            'due_date': forms.DateTimeInput(attrs={'type': 'date', 'format': 'd-m-Y'}),
             'title': forms.TextInput(attrs={'name': 'title',
                                             'placeholder': 'Task Title'}),
             'origin_url': forms.HiddenInput()

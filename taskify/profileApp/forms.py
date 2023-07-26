@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 
 UserModel = get_user_model()
 
 
-class ProfileCreateForm(UserCreationForm):
+class UserCreateForm(UserCreationForm):
+
     username = forms.CharField(
         widget=forms.TextInput(attrs={
             'placeholder': 'Username',
@@ -24,8 +25,12 @@ class ProfileCreateForm(UserCreationForm):
         }),
     )
 
+    class Meta:
+        model = UserModel
+        fields = ('username', 'password1', 'password2')
 
-class ProfileLoginForm(AuthenticationForm):
+
+class UserLoginForm(AuthenticationForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={
             'placeholder': 'Username'
@@ -37,5 +42,4 @@ class ProfileLoginForm(AuthenticationForm):
             'class': 'password-field'
         }),
     )
-
 

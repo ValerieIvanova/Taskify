@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, date
+from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -42,14 +43,13 @@ class TaskAdd(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-
-        if not form.cleaned_data['due_date']:
-            form.instance.due_date = datetime.today()
+        form.instance.start_date = datetime.strptime(form.cleaned_data['start_date'], '%d.%m.%Y').date()
+        form.instance.due_date = datetime.strptime(form.cleaned_data['due_date'], '%d.%m.%Y').date()
         return super(TaskAdd, self).form_valid(form)
 
     def get_success_url(self):
-        origin_url = self.request.POST.get('origin_url')
-        if origin_url and 'calendar' in origin_url:
+        origin_url = self.request.GET.get('origin_url') or self.request.POST.get('origin_url')
+        if origin_url and 'calendar' in urlparse(origin_url).path:
             return reverse_lazy('task_calendar')
         return reverse_lazy('dashboard')
 

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="edit_profile_form_wrapper">
+        <div class="edit-profile-form-container">
+            <h1>Edit Profile</h1>
+            <form
+                    action="{% url 'edit_user_profile' pk=request.user.pk %}"
+                    method="post"
+                    style="display: flex;flex-direction: column;">
+                {% csrf_token %}
+                {{ form }}
+                <div class="profile-buttons">
+                    <button type="submit" class="edit-profile-button">Save</button>
+                    <a href="{% url 'details_user_profile' pk=request.user.pk %}" class="go-back-button">Go Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

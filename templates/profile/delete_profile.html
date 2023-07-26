@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="delete-profile-form-wrapper">
+        <div class="img-form-wrapper">
+            <img class="img-delete-profile"
+             src="{% static 'assets/img/funny-cute-owl-sad-crying-howl-mug-removebg-preview.png' %}">
+        <form class="delete-profile-form content-pos" method="post" action="{% url 'delete_user_profile' request.user.pk %}">
+            {% csrf_token %}
+            <h2>We aro so sad to see you go...</h2>
+            <h3>Are you sure you want to delete your profile?</h3>
+            <div class="task-buttons">
+                <button type="submit" class="delete-task-button">Delete</button>
+                <a type="submit" href="{% url 'details_user_profile' request.user.pk %}" class="go-back-button">Go
+                    Back</a>
+            </div>
+        </form>
+        </div>
+    </div>
+{% endblock %}

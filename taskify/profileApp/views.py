@@ -1,25 +1,25 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from taskify.mixins import AnonymousRequiredMixin
-from taskify.profileApp.forms import ProfileCreateForm, ProfileLoginForm
-from taskify.profileApp.models import Profile
+from taskify.profileApp.forms import UserCreateForm, UserLoginForm
+from taskify.profileApp.models import UserProfile
+
+UserModel = get_user_model()
 
 
 class RegisterView(AnonymousRequiredMixin, CreateView):
-    model = Profile
+    model = UserModel
     template_name = 'profile/register.html'
-    form_class = ProfileCreateForm
+    form_class = UserCreateForm
     success_url = reverse_lazy('dashboard')
 
     def form_valid(self, form):
         result = super().form_valid(form)
-        user = form.save()
-        Profile.objects.create(user=user)
         login(self.request, self.object)
         return result
 
@@ -32,7 +32,7 @@ class RegisterView(AnonymousRequiredMixin, CreateView):
 class CustomLoginView(AnonymousRequiredMixin, LoginView):
     template_name = 'profile/custom_login.html'
     redirect_authenticated_user = True
-    form_class = ProfileLoginForm
+    form_class = UserLoginForm
     success_url = reverse_lazy('dashboard')
 
     def form_invalid(self, form):
@@ -52,3 +52,22 @@ class CustomLogoutView(LoginRequiredMixin, LogoutView):
             return super().post(request, *args, **kwargs)
 
         return redirect('dashboard')
+
+
+class EditUserProfileView(LoginRequiredMixin, UpdateView):
+    model = UserProfile
+    fields = ['first_name', 'last_name', 'age', 'email', 'profile_picture']
+    template_name = 'profile/edit_profile.html'
+    success_url = reverse_lazy('dashboard')
+
+
+class DetailsUserProfileView(LoginRequiredMixin, DetailView):
+    model = UserProfile
+    template_name = 'profile/details_profile.html'
+    context_object_name = 'user_profile'
+
+
+class DeleteUserProfileView(LoginRequiredMixin, DeleteView):
+    model = UserModel
+    template_name = 'profile/delete_profile.html'
+    success_url = reverse_lazy('index')

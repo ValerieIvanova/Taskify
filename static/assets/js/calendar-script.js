@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             displayAddTaskForm(info.dateStr); // Call the function to display the add task form
         },
-        events: 'events/', // Specify the URL to fetch events
+        events: '/tasks/calendar/events/', // Specify the URL to fetch events
         eventContent: function (arg) {
             // Custom event content function
             return {
@@ -44,8 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayAddTaskForm(selectedDate) {
         let formWrapper = document.getElementById('calendar-form-wrapper');
         let form = document.getElementById('add-task-form');
+        let startDate = document.querySelector("#id_start_date");
+        let dueDate = document.querySelector("#id_due_date");
 
-        form.action = window.location.origin + '/tasks/add/';
+        startDate.value = selectedDate;
+        dueDate.value = selectedDate;
         formWrapper.classList.remove('hidden-form'); // Remove the hidden-form class to show the form
     }
 

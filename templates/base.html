@@ -10,7 +10,7 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/style-responsive.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css" rel="stylesheet">
 </head>
 
 <body class="overlay">
@@ -50,7 +50,7 @@
                             src="{% static 'assets/img/ui-sam.jpg' %}"
                             class="img-circle"
                             width="60"></a></p>
-                    <h5 class="centered">{{ request.user.first_name }} {{ request.user.last_name }}</h5>
+                    <h5 class="centered">{{ request.user.userprofile }}</h5>
 
                     <li class="mt">
                         <a href="{% url 'dashboard' %}">
@@ -67,7 +67,7 @@
                     </li>
 
                     <li class="sub-menu">
-                        <a href="">
+                        <a href="{% url 'details_user_profile' pk=request.user.pk %}">
                             <i class="fa fa-user"></i>
                             <span>Profile</span>
                         </a>
@@ -116,6 +116,7 @@
 <!-- External js files -->
 <script src={% static 'assets/js/side-bar-toggle.js' %}></script>
 <script src={% static 'assets/js/datetime.js' %}></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js"></script>
 <script src="{% static 'assets/js/calendar-script.js' %}"></script>
 
 </body>

@@ -27,8 +27,8 @@ INSTALLED_APPS = [
 
     # Apps
     'taskify.common',
-    'taskify.tasksApp',
     'taskify.profileApp',
+    'taskify.tasksApp',
 
     'colorfield'
 
@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'taskify.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "to_do_db",
+        "NAME": "taskify_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",
@@ -129,3 +129,5 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'index'
+
+AUTH_USER_MODEL = 'profileApp.CustomUser'

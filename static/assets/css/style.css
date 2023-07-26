@@ -328,7 +328,8 @@ div.about-info {
 
 
 .add-task-form-wrapper,
-.edit-task-form-wrapper {
+.edit-task-form-wrapper,
+.edit_profile_form_wrapper {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -338,7 +339,11 @@ div.about-info {
 /*--todo list*/
 .todo-container,
 .task-details,
-.calendar-container {
+.calendar-container,
+.profile-details,
+.edit-task-form-container,
+.edit-profile-form-container,
+.add-task-form-container {
     background: rgba(224, 217, 210, 0.5);
     backdrop-filter: blur(4px);
     border-radius: 10px;
@@ -454,11 +459,13 @@ button {
 
 .delete-form-wrapper,
 .logout-form-wrapper {
+    color: #FFFFFF;
     height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .delete-form,
@@ -642,3 +649,40 @@ button {
     position: relative;
 }
 
+.delete-profile-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(93, 82, 80, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.img-form-wrapper {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-profile-form {
+    background-color: rgba(224, 217, 210, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: #282e36 0 0 10px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 40%;
+    max-width: 70%;
+}
+
+.img-delete-profile {
+    width: 30%; /* Adjust the width of the image as needed */
+    height: auto;
+    position: relative;
+    z-index: 5;
+    top: 38px;
+}
