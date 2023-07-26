@@ -27,6 +27,12 @@ class Dashboard(LoginRequiredMixin, ListView):
                 title__icontains=search_input
             )
         context['search_input'] = search_input
+
+        origin_url = self.request.path
+        for task in context['tasks']:
+            task.origin_url = origin_url
+            task.save()
+
         return context
 
 
@@ -43,8 +49,6 @@ class TaskAdd(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.start_date = datetime.strptime(form.cleaned_data['start_date'], '%d.%m.%Y').date()
-        form.instance.due_date = datetime.strptime(form.cleaned_data['due_date'], '%d.%m.%Y').date()
         return super(TaskAdd, self).form_valid(form)
 
     def get_success_url(self):
@@ -93,6 +97,10 @@ def task_list(request):
     tasks_list = []
 
     for task in tasks:
+        origin_url = request.path
+        task.origin_url = origin_url
+        task.save()
+
         start_date_iso = task.start_date.isoformat() if task.start_date else None
         due_date_iso = task.due_date.isoformat() if task.due_date else None
         tasks_list.append({

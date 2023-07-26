@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.js'></script>
+
 
     <div id='calendar' class="calendar-container content-pos"></div>
 
     <div id="calendar-form-wrapper" class="hidden-form">
-    <h1>Add New Task</h1>
+        <h1>Add New Task</h1>
         <form id="add-task-form" method="post" action="{% url 'add_task' %}">
             {% csrf_token %}
             {{ form.title }}
@@ -17,5 +20,6 @@
             <button type="button"><a href="{% url 'task_calendar' %}" class="go-back-button">Go Back</a></button>
         </form>
     </div>
+<script src="{% static 'assets/js/calendar-script.js' %}"></script>
 
 {% endblock %}

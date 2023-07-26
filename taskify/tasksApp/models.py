@@ -1,5 +1,6 @@
 from datetime import datetime
 
+import django
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
 from django.db import models
@@ -75,7 +76,7 @@ class Task(models.Model):
     due_date = models.DateField(
         null=True,
         blank=True,
-        default=start_date
+        default=django.utils.timezone.now
     )
 
     enable_reminders = models.BooleanField(

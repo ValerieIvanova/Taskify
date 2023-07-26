@@ -11,9 +11,14 @@
         <p><b>Status:</b> {{ task.status }}</p>
         <p><b>Reminder:</b> {{ task.reminder }}</p>
         <div class="task-buttons">
-            <button class="mt mb"><a href="{% url 'dashboard' %}" class="go-back-button">Go Back</a></button>
+            {% if 'calendar' in task.origin_url %}
+                <button class="mt mb"><a href="{% url 'task_calendar' %}" class="go-back-button">Go Back</a></button>
+            {% else %}
+                <button class="mt mb"><a href="{% url 'dashboard' %}" class="go-back-button">Go Back</a></button>
+            {% endif %}
             <button class="mt mb"><a href="{% url 'edit_task' task.pk %}" class="edit-task-button">Edit</a></button>
-            <button class="mt mb"><a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a></button>
+            <button class="mt mb"><a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a>
+            </button>
         </div>
 
     </div>
