@@ -76,7 +76,10 @@ class Task(models.Model):
     due_date = models.DateField(
         null=True,
         blank=True,
-        default=django.utils.timezone.now
+        default=django.utils.timezone.now,
+        validators=[
+            date_in_the_past
+        ]
     )
 
     enable_reminders = models.BooleanField(

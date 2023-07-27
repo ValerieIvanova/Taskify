@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let dueDate = document.querySelector("#id_due_date");
 
         startDate.value = selectedDate;
-        dueDate.value = selectedDate;
+        dueDate.value = today();
         formWrapper.classList.remove('hidden-form'); // Remove the hidden-form class to show the form
     }
 

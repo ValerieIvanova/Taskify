@@ -117,9 +117,9 @@ a, a:hover, a:focus {
 }
 
 
-.about, .datetime {
+.about,
+.datetime {
     color: #f2f2f2;
-    font-size: 12px;
     border-radius: 4px;
     border: 1px solid #5d5250;
     padding: 5px 15px;
@@ -127,6 +127,14 @@ a, a:hover, a:focus {
     background: #756b6a;
     margin-top: 0.4em;
     float: right;
+    transition: background-color 0.3s ease;
+    font: 700 13px consolas;
+    letter-spacing: 2px;
+}
+
+
+.about:hover {
+    background-color: #a99d9c;
 }
 
 .about-link {
@@ -445,6 +453,44 @@ button {
     border: 1px solid #5d5250;
     background: #756b6a;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-task-button:hover,
+.delete-task-button:hover,
+.logout-button:hover,
+.details-task-button:hover,
+.go-back-button:hover,
+.add-task-button:hover,
+.search-button:hover {
+    background-color: #a99d9c;
+}
+
+/*Calendar*/
+
+.calendar-event {
+    cursor: pointer;
+}
+
+#calendar > div.fc-header-toolbar.fc-toolbar > div > button {
+    background-color: #756b6a;
+}
+
+#calendar > div.fc-header-toolbar.fc-toolbar > div:nth-child(1) > div > button.fc-button.fc-button-primary {
+    background-color: #756b6a;
+}
+
+.fc-daygrid-day-frame:hover {
+    background-color: rgba(242, 242, 242, 0.3); /* Background color on hover */
+    color: #333; /* Font color on hover */
+    border: 1px solid #ccc; /* Border on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#calendar > div.fc-view-harness.fc-view-harness-active > div > table > tbody > tr > td > div > div > div > table > tbody > tr:nth-child(5) > td.fc-day.fc-day-thu.fc-day-today {
+    background-color: rgba(242, 242, 242, 0.6);
+
 }
 
 
@@ -618,7 +664,6 @@ button {
 
 #calendar {
     max-width: 80%;
-
     position: relative;
 }
 
@@ -634,7 +679,7 @@ button {
     box-shadow: #282e36 0 0 10px;
 }
 
-#calendar-form-wrapper form input, select{
+#calendar-form-wrapper form input, select {
     font-size: 24px;
     width: 50%;
     padding: 6px;
@@ -666,7 +711,9 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
+
 
 .delete-profile-form {
     background-color: rgba(224, 217, 210, 0.5);
@@ -680,9 +727,118 @@ button {
 }
 
 .img-delete-profile {
-    width: 30%; /* Adjust the width of the image as needed */
+    width: 30%;
     height: auto;
     position: relative;
     z-index: 5;
     top: 38px;
+}
+
+/*try*/
+
+a.admin-link {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: 0.5em;
+    padding: 5px 15px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+    background-color: #756b6a;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font: 700 12px consolas;
+}
+
+.admin-link:hover {
+    background-color: #a99d9c;
+}
+
+a.admin-link span {
+    overflow: hidden;
+}
+
+.admin-link span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #a9867a, #fad3d3);
+    animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+
+}
+
+.admin-link span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, #a9867a, #fad3d3);
+    animation: animate2 2s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+
+}
+
+.admin-link span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to left, #a9867a, #fad3d3);
+    animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+
+}
+
+.admin-link span:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to top, #a9867a, #fad3d3);
+    animation: animate4 2s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes animate4 {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+
 }

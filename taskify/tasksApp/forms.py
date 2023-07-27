@@ -6,11 +6,11 @@ from taskify.tasksApp.models import Task
 
 class TaskBaseForm(forms.ModelForm):
     start_date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'value': timezone.now().date()}),
+        widget=forms.DateInput(attrs={'type': 'date'}),
     )
 
     due_date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'value': timezone.now().date()}),
+        widget=forms.DateInput(attrs={'type': 'date'}),
     )
 
     class Meta:
