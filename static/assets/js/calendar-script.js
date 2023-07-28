@@ -37,7 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function today() {
         let now = new Date();
         now.setHours(0, 0, 0, 0);
-        return now;
+        let year = now.getFullYear();
+        let month = String(now.getMonth() + 1).padStart(2, '0');
+        let day = String(now.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 
     // Function to display the add task form
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let dueDate = document.querySelector("#id_due_date");
 
         startDate.value = selectedDate;
-        dueDate.value = today();
+        dueDate.value = selectedDate;
         formWrapper.classList.remove('hidden-form'); // Remove the hidden-form class to show the form
     }
 
