@@ -206,6 +206,7 @@ ul.sidebar-menu li a {
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
     background: #5d5250;
+    box-shadow: #282e36 0 0 10px;
     color: #fff;
     display: block;
     transition: all 0.3s ease;
@@ -367,23 +368,58 @@ div.about-info {
     text-align: center;
 }
 
-.todo-container form {
-    margin-bottom: 3vh;
-
+.todo-container h2 {
+    margin-bottom: 6vh;
 }
 
-.todo-container form input[type="text"] {
+.sort-by-category,
+.search-by-name,
+.sort-by-status {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2vh;
+}
+
+.sort-by-category select:hover,
+.sort-by-status select:hover,
+.search-by-name input[type="text"]:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: #282e36 0 0 10px;
+}
+
+.todo-container form input[type="text"],
+.todo-container form select,
+.edit-profile-form-container input[type="text"],
+.edit-profile-form-container input[type="number"],
+.edit-profile-form-container input[type="email"] {
     width: 50%;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid black;
-    padding: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.todo-container form input[type="text"]::placeholder {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.todo-container form select {
+    color: #797979;
+    font-size: 14px;
 }
 
 .todo-list {
     list-style-type: none;
     margin: 0;
-    padding: 0 4em;
+    padding: 4em 4em;
+}
+
+.add-task-dash-btn {
+    text-align: center;
+    margin-bottom: 6vh;
 }
 
 .task-item {
@@ -391,16 +427,16 @@ div.about-info {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
-    /*border-bottom: 1px solid #756a6a;*/
+    line-height: 2;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.task-item:hover {
+.task-item:hover{
     background: rgba(224, 217, 210, 0.5);
     border-radius: 10px;
     box-shadow: #282e36 0 0 10px;
     backdrop-filter: blur(4px);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 
@@ -409,6 +445,7 @@ div.about-info {
 }
 
 .checkbox-container {
+    display: inline-block;
     position: relative;
     width: 20px;
     height: 20px;
@@ -423,12 +460,26 @@ div.about-info {
 
 .checkbox-label {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 20%;
+    left: 20%;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     background-color: #ffffff;
+}
+
+.checkbox-title {
+    width: 30%;
+}
+
+span.task-due-date {
+    width: 40%;
+    text-align: center;
+}
+
+.task-buttons-details {
+    width: 30%;
+    text-align: right;
 }
 
 button {
@@ -446,7 +497,9 @@ button {
 .details-task-button,
 .go-back-button,
 .add-task-button,
-.search-button {
+.search-button,
+.edit-profile-button,
+.delete-profile-button {
     margin-left: 10px;
     padding: 6px 10px;
     color: white;
@@ -462,7 +515,9 @@ button {
 .details-task-button:hover,
 .go-back-button:hover,
 .add-task-button:hover,
-.search-button:hover {
+.search-button:hover,
+.edit-profile-button:hover,
+.delete-profile-button:hover {
     background-color: #a99d9c;
 }
 
@@ -841,4 +896,15 @@ a.admin-link span {
         transform: translateY(-100%);
     }
 
+}
+
+.profile-details {
+    max-width: 40%;
+    text-align: center;
+}
+
+.edit-profile-form-container{
+    text-align: center;
+    line-height: 6vh;
+    width: 50%;
 }

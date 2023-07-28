@@ -58,7 +58,9 @@ class EditUserProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
     fields = ['first_name', 'last_name', 'age', 'email', 'profile_picture']
     template_name = 'profile/edit_profile.html'
-    success_url = reverse_lazy('dashboard')
+
+    def get_success_url(self):
+        return reverse_lazy('details_user_profile', kwargs={'pk': self.object.user.id})
 
 
 class DetailsUserProfileView(LoginRequiredMixin, DetailView):

@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import django
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator
@@ -7,8 +5,6 @@ from django.db import models
 
 from colorfield.fields import ColorField
 from django.utils import timezone
-
-from taskify.tasksApp.validators import date_in_the_past
 
 UserModel = get_user_model()
 

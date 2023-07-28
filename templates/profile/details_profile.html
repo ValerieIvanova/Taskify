@@ -11,7 +11,8 @@
         <div class="task-buttons">
             <button class="mt mb"><a href="{% url 'edit_user_profile' pk=request.user.pk %}"
                                      class="edit-profile-button">Edit Profile</a></button>
-            <button class="mt mb"><a href='{% url 'delete_user_profile' pk=request.user.pk %}'>Delete Profile</a></button>
+            <button class="mt mb"><a href='{% url 'delete_user_profile' pk=request.user.pk %}'
+                                     class="delete-profile-button">Delete Profile</a></button>
         </div>
 
     </div>

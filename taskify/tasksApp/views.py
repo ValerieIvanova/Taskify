@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from taskify.tasksApp.forms import TaskAddForm, TaskEditForm
-from taskify.tasksApp.models import Task, Category
+from taskify.tasksApp.models import Task, Category, TaskStatus
 
 
 class Dashboard(LoginRequiredMixin, ListView):
@@ -21,6 +21,8 @@ class Dashboard(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['categories'] = Category.objects.all()
+        context['statuses'] = TaskStatus.objects.all()
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
@@ -28,6 +30,20 @@ class Dashboard(LoginRequiredMixin, ListView):
                 title__icontains=search_input
             )
         context['search_input'] = search_input
+
+        category_input = self.request.GET.get('category') or ''
+        if category_input:
+            context['tasks'] = context['tasks'].filter(
+                category__name__iexact=category_input
+            )
+        context['category_input'] = category_input
+
+        status_input = self.request.GET.get('status') or ''
+        if status_input:
+            context['tasks'] = context['tasks'].filter(
+                status__status__iexact=status_input
+            )
+        context['status_input'] = status_input
 
         origin_url = self.request.path
         for task in context['tasks']:
@@ -102,8 +118,10 @@ def task_list(request):
         task.origin_url = origin_url
         task.save()
 
+        due_date = task.due_date + timedelta(days=1)
+
         start_date_iso = task.start_date.isoformat() if task.start_date else None
-        due_date_iso = task.due_date.isoformat() if task.due_date else None
+        due_date_iso = due_date.isoformat() if task.due_date else None
         tasks_list.append({
             'id': task.pk,
             'title': task.title,

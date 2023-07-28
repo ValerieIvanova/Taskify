@@ -43,6 +43,8 @@ class TaskAddForm(TaskBaseForm):
         due_date = self.cleaned_data.get('due_date')
         if due_date < timezone.now().date():
             raise forms.ValidationError('Due date cannot be in the past.')
+        elif due_date < self.cleaned_data.get('start_date'):
+            raise forms.ValidationError('Due date cannot be before the start date.')
         return due_date
 
 
