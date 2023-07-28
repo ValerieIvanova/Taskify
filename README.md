@@ -9,4 +9,5 @@ Calendar View: Taskify utilizes the FullCalendar library to present tasks in a u
 Add Tasks from Calendar: By clicking on a date, users can conveniently add new tasks directly from the calendar.
 
 Coming soon:
-Responsive Design: Taskify is designed to work seamlessly across various devices, ensuring a smooth user experience.
+1. Responsive Design: Taskify is designed to work seamlessly across various devices, ensuring a smooth user experience.
+2. Reminders
