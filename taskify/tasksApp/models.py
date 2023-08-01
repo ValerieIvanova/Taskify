@@ -129,5 +129,9 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
+    def delete(self, *args, **kwargs):
+        self.reminder.delete()
+        super().delete(*args, **kwargs)
+
     class Meta:
         ordering = ['status']
