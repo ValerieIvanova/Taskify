@@ -442,7 +442,7 @@ div.about-info {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.task-item:hover{
+.task-item:hover {
     background: rgba(224, 217, 210, 0.5);
     border-radius: 10px;
     box-shadow: #282e36 0 0 10px;
@@ -532,6 +532,15 @@ button {
 .edit-profile-button:hover,
 .delete-profile-button:hover {
     background-color: #a99d9c;
+}
+
+.reminder-active {
+    margin-left: 10px;
+    padding: 6px 10px;
+    color: #5d5250;
+    border: 1px solid #5d5250;
+    background: #c9c1c0;
+    border-radius: 4px;
 }
 
 /*Calendar*/
@@ -916,7 +925,7 @@ a.admin-link span {
     text-align: center;
 }
 
-.edit-profile-form-container{
+.edit-profile-form-container {
     text-align: center;
     line-height: 6vh;
     width: 50%;

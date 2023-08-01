@@ -26,6 +26,7 @@ class Dashboard(LoginRequiredMixin, ListView):
         context['categories'] = Category.objects.all()
         context['statuses'] = TaskStatus.objects.all()
 
+
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['tasks'] = context['tasks'].filter(
