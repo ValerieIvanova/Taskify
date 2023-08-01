@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from taskify.tasksApp.models import Category, TaskStatus, Task, Reminder
+from taskify.tasksApp.models import Category, TaskStatus, Task
 
 
 @admin.register(Category)
@@ -22,10 +22,3 @@ class TaskAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'user')
     ordering = ('-created_on',)
     date_hierarchy = 'created_on'
-
-
-@admin.register(Reminder)
-class ReminderAdmin(admin.ModelAdmin):
-    pass
-
-

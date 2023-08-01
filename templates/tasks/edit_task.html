@@ -8,7 +8,9 @@
                     method="post"
                     style="display: flex;flex-direction: column;">
                 {% csrf_token %}
-                {{ form }}
+                {% for field in form %}
+                        {{ field }}
+                {% endfor %}
                 <div class="task-buttons">
                     <button type="submit" class="edit-task-button">Save</button>
                     <a href="{% url 'details_task' task.pk %}" class="go-back-button">Go Back</a>

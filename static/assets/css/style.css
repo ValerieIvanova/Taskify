@@ -337,6 +337,7 @@ div.about-info {
 
 
 .add-task-form-wrapper,
+.add-reminder-form-wrapper,
 .edit-task-form-wrapper,
 .edit_profile_form_wrapper {
     height: 100%;
@@ -345,6 +346,15 @@ div.about-info {
     align-items: center;
 }
 
+#task-form,
+#reminder-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 /*--todo list*/
 .todo-container,
 .task-details,
@@ -352,7 +362,8 @@ div.about-info {
 .profile-details,
 .edit-task-form-container,
 .edit-profile-form-container,
-.add-task-form-container {
+.add-task-form-container,
+.add-reminder-form-container {
     background: rgba(224, 217, 210, 0.5);
     backdrop-filter: blur(4px);
     border-radius: 10px;
@@ -495,6 +506,7 @@ button {
 .delete-task-button,
 .logout-button,
 .details-task-button,
+.add-reminder-button,
 .go-back-button,
 .add-task-button,
 .search-button,
@@ -513,6 +525,7 @@ button {
 .delete-task-button:hover,
 .logout-button:hover,
 .details-task-button:hover,
+.add-reminder-button:hover,
 .go-back-button:hover,
 .add-task-button:hover,
 .search-button:hover,

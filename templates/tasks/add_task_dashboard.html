@@ -5,10 +5,9 @@
         <div class="add-task-form-container">
             <form
                     action="{% url 'add_task' %}"
-                    method="post"
-                    style="display: flex;flex-direction: column;">
+                    method="post">
                 {% csrf_token %}
-                {{ form }}
+                {{ form.as_p }}
                 <button type="submit" value="Add" class="mt mb"><a class="add-task-button">Add</a></button>
             </form>
         </div>

@@ -49,6 +49,9 @@
                             {% endif %}
                         </span>
                         <div class="task-buttons-details">
+                            {% if not task.reminder %}
+                            <a href="{% url 'add_reminder' task.pk %}" class="add-reminder-button">Set a reminder</a>
+                            {% endif %}
                             <a href="{% url 'details_task' task.pk %}" class="details-task-button">Details</a>
                         </div>
                     </div>

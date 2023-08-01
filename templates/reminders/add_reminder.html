@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="add-reminder-form-wrapper">
+        <div class="add-reminder-form-container">
+            <h1>Set a Reminder</h1>
+            <h3>To: {{ task.title }}</h3>
+            <p>Start Date: {{ task.start_date }}</p>
+            <p>Due Date: {{ task.due_date }}</p>
+            <form
+                    action="{% url 'add_reminder' pk=task.pk %}"
+                    method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" value="Add" class="mt mb"><a class="add-task-button">Add</a></button>
+                <button class="mt mb"><a href="{% url 'dashboard' %}" class="go-back-button">Go Back</a></button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

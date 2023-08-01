@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'taskify.common',
     'taskify.profileApp',
     'taskify.tasksApp',
+    'taskify.remindersApp',
 
     'colorfield'
 

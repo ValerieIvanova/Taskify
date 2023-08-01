@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('taskify.common.urls')),
     path('tasks/', include('taskify.tasksApp.urls')),
     path('profile/', include('taskify.profileApp.urls')),
+    path('reminders/', include('taskify.remindersApp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

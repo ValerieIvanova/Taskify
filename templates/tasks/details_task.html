@@ -9,7 +9,18 @@
         <p><b>Due Date:</b> {{ task.due_date }}</p>
         <p><b>Priority:</b> {{ task.priority }}</p>
         <p><b>Status:</b> {{ task.status }}</p>
-        <p><b>Reminder:</b> {{ task.reminder }}</p>
+        <p>
+            <b>Reminder:</b>
+            {% if task.reminder %}
+                {{ task.reminder }}
+                <a href="{% url 'delete_reminder' task.reminder.pk %}" class="add-reminder-button">Delete reminder</a>
+
+            {% else %}
+                <a href="{% url 'add_reminder' task.pk %}" class="add-reminder-button">Set a reminder</a>
+            {% endif %}
+        </p>
+
+
         <div class="task-buttons">
             {% if 'calendar' in task.origin_url %}
                 <button class="mt mb"><a href="{% url 'task_calendar' %}" class="go-back-button">Go Back</a></button>

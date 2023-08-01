@@ -24,15 +24,20 @@ class TaskBaseForm(forms.ModelForm):
             'category',
             'status',
             'origin_url',
+            'reminder'
         ]
         widgets = {
             'title': forms.TextInput(attrs={'name': 'title',
                                             'placeholder': 'Task Title'}),
-            'origin_url': forms.HiddenInput()
+            'origin_url': forms.HiddenInput(),
         }
 
 
 class TaskAddForm(TaskBaseForm):
+    class Meta:
+        model = Task
+        exclude = ['reminder', 'user', 'origin_url', 'enable_reminders']
+
     def clean_start_date(self):
         start_date = self.cleaned_data.get('start_date')
         if start_date < timezone.now().date():
@@ -49,6 +54,10 @@ class TaskAddForm(TaskBaseForm):
 
 
 class TaskEditForm(TaskBaseForm):
+    class Meta:
+        model = Task
+        exclude = ['reminder', 'user', 'origin_url', 'enable_reminders']
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.__set_disabled_fields()
