@@ -1,5 +1,6 @@
-
+import os
 from pathlib import Path
+import certifi
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +133,12 @@ LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'index'
 
 AUTH_USER_MODEL = 'profileApp.CustomUser'
+
+# Email
+os.environ['SSL_CERT_FILE'] = certifi.where()
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'taskify2023@gmail.com'
+EMAIL_HOST_PASSWORD = 'xcbryjddmheosxgj'

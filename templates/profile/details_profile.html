@@ -6,7 +6,7 @@
         <p><b>First Name:</b> {{ user_profile.first_name }}</p>
         <p><b>Last Name:</b> {{ user_profile.last_name }}</p>
         <p><b>Age:</b> {{ user_profile.age }}</p>
-        <p><b>Email:</b> {{ user_profile.email }}</p>
+        <p><b>Email:</b> {{ user_profile.user.email }}</p>
 
         <div class="task-buttons">
             <button class="mt mb"><a href="{% url 'edit_user_profile' pk=request.user.pk %}"

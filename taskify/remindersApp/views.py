@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
@@ -28,6 +28,7 @@ class AddReminderView(CreateView):
         reminder = form.save()
         task.reminder = reminder
         task.save()
+
         return super().form_valid(form)
 
     def get_success_url(self):

@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 
 from taskify.remindersApp.models import Reminder
-from taskify.tasksApp.models import Task
 
 
 class ReminderAddForm(forms.ModelForm):
@@ -30,4 +29,3 @@ class ReminderAddForm(forms.ModelForm):
             raise ValidationError('Reminder date must be before the due date of the task.')
 
         return cleaned_data
-

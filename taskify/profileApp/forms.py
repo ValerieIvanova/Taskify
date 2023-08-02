@@ -6,12 +6,18 @@ UserModel = get_user_model()
 
 
 class UserCreateForm(UserCreationForm):
-
     username = forms.CharField(
         widget=forms.TextInput(attrs={
             'placeholder': 'Username',
         })
     )
+
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Email',
+        })
+    )
+
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'placeholder': 'Password',
@@ -27,7 +33,7 @@ class UserCreateForm(UserCreationForm):
 
     class Meta:
         model = UserModel
-        fields = ('username', 'password1', 'password2')
+        fields = ('username', 'email', 'password1', 'password2')
 
 
 class UserLoginForm(AuthenticationForm):
@@ -42,4 +48,3 @@ class UserLoginForm(AuthenticationForm):
             'class': 'password-field'
         }),
     )
-

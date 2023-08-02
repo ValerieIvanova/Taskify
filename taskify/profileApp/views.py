@@ -56,7 +56,7 @@ class CustomLogoutView(LoginRequiredMixin, LogoutView):
 
 class EditUserProfileView(LoginRequiredMixin, UpdateView):
     model = UserProfile
-    fields = ['first_name', 'last_name', 'age', 'email', 'profile_picture']
+    fields = ['first_name', 'last_name', 'age', 'profile_picture']
     template_name = 'profile/edit_profile.html'
 
     def get_success_url(self):

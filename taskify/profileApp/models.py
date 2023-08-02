@@ -17,6 +17,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         validators=[UnicodeUsernameValidator()],
     )
 
+    email = models.EmailField(
+        max_length=254,
+        unique=True,
+        null=False,
+        blank=False
+    )
+
     is_staff = models.BooleanField(
         default=False,
     )
@@ -67,12 +74,6 @@ class UserProfile(models.Model):
     )
 
     age = models.PositiveIntegerField(
-        null=True,
-        blank=True
-    )
-
-    email = models.EmailField(
-        max_length=254,
         null=True,
         blank=True
     )

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify.</title>
+</head>
+<body style="display: flex;
+			justify-content: center;">
+<div style="display: flex;
+			justify-content: center;
+			border: 3px solid rgb(65, 63, 63);
+			border-radius: 20px;
+			margin: 2%;
+			max-width: 620px;">
+    <div>
+        <table>
+            <nav style="">
+                <img style="width: 10rem;
+			 margin-top: 10px;
+			 height: 3.3rem;"
+                     src="https://taskify.co/wp-content/uploads/2023/01/Taskify_1.png"
+                     alt="Logo">
+            </nav>
+        </table>
+
+        <h1 style="			text-align: center;
+                color: rgb(65, 63, 63);
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+
+            <!-- Receiver username -->
+            Hello, {{ user.username }} !</h1>
+
+        <div style="display: flex;
+                justify-content: center;">
+            <img style="width: 70%;" id="owl-image"
+                 src="https://www.kindpng.com/picc/m/54-546769_reading-owl-cartoon-blue-book-image-and-for.png"
+                 alt="gif owl">
+        </div>
+
+        <p style="max-width: 620px;
+            padding: 20px 20px 0 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            Congratulations on creating your profile at Taskify.
+            We are thrilled to have you on board, and we believe that Taskify will be the perfect platform for you to
+            manage your tasks efficiently and effortlessly.
+
+            With Taskify, you can easily create and organize your tasks, set due dates, prioritize, and even collaborate
+            with team members if needed. Our user-friendly interface ensures a seamless experience, making task
+            management a breeze.
+
+            Whether you are a busy professional, a student, or simply someone looking to stay organized, Taskify is
+            designed to cater to your unique needs and help you stay on top of your tasks and deadlines.
+            Once again, welcome to the Taskify community! Happy tasking!
+        </p>
+        <p style="max-width: 620px;
+            padding: 20px 20px 0 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            Sincerely,
+            <br>
+            <img style="width: 30%;
+            margin-top: 10px;
+            margin-left: -4px;"
+                 src="https://taskify.co/wp-content/uploads/2023/01/Taskify_1.png"
+                 alt="Logo">
+        </p>
+    </div>
+</div>
+</body>
+</html>
