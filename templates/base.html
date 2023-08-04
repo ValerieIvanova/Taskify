@@ -22,9 +22,7 @@
                          data-original-title="Toggle Navigation"></div>
                 </div>
             {% endif %}
-            <!--logo start-->
             <a href="{% url 'index' %}" class="logo"><b>TASKIFY.</b></a>
-            <!--logo end-->
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
@@ -51,11 +49,16 @@
         <!--sidebar start-->
         <aside id="sidebar">
             <div class="nav-collapse">
-                <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
                     <p class="centered"><a href="{% url 'details_user_profile' pk=request.user.pk %}"><img
-                            src="{% static 'assets/img/ui-sam.jpg' %}"
+                            src="
+                            {% if request.user.user_profile.profile_picture %}
+{{ request.user.user_profile.profile_picture.url }}
+{% else %}
+{% static 'assets/img/ui-sam.jpg' %}
+{% endif %}
+"
                             class="img-circle"
                             width="60"></a></p>
                     <h5 class="centered">{{ request.user.userprofile }}</h5>

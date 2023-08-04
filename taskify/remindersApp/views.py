@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -7,7 +8,7 @@ from taskify.remindersApp.models import Reminder
 from taskify.tasksApp.models import Task
 
 
-class AddReminderView(CreateView):
+class AddReminderView(LoginRequiredMixin, CreateView):
     model = Reminder
     form_class = ReminderAddForm
     template_name = 'reminders/add_reminder.html'
@@ -36,7 +37,7 @@ class AddReminderView(CreateView):
         return reverse_lazy('details_task', kwargs={'pk': task_id})
 
 
-class DeleteReminderView(DeleteView):
+class DeleteReminderView(LoginRequiredMixin, DeleteView):
     model = Reminder
     template_name = 'reminders/delete_reminder.html'
     success_url = reverse_lazy('dashboard')

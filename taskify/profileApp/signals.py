@@ -7,13 +7,6 @@ from django.dispatch import receiver
 
 from ..profileApp.email_utils import send_email_with_template
 
-
-@receiver(post_save, sender=get_user_model())
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-
-
 UserModel = get_user_model()
 
 
@@ -31,6 +24,7 @@ def send_successful_registration_email(user):
 
 
 @receiver(post_save, sender=UserModel)
-def user_created(instance, created, **kwargs):
+def create_user_profile(sender, instance, created, **kwargs):
     if created:
+        UserProfile.objects.create(user=instance)
         send_successful_registration_email(instance)

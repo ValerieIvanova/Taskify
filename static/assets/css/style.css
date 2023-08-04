@@ -930,3 +930,10 @@ a.admin-link span {
     line-height: 6vh;
     width: 50%;
 }
+
+#profile-pic {
+    max-width: 30%;
+    border-radius: 4%;
+    border: #424a5d 1px solid;
+    box-shadow: #282e36 0 0 10px;
+}

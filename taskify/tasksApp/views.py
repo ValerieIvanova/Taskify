@@ -99,8 +99,6 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     context_object_name = 'task'
 
 
-
-
 @login_required
 def task_calendar(request):
     categories = Category.objects.all()
@@ -135,4 +133,3 @@ def task_list(request):
             'category_color': task.category.color,
         })
     return JsonResponse(tasks_list, safe=False)
-

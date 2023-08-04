@@ -79,7 +79,7 @@ class UserProfile(models.Model):
     )
 
     profile_picture = models.ImageField(
-        upload_to='media/profile_pictures',
+        upload_to='profile_pictures',
         null=True,
         blank=True,
     )

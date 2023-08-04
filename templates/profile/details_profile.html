@@ -2,7 +2,11 @@
 {% block content %}
     <div class="profile-details content-pos">
         <h2>{{ user_profile.user }}'s Profile</h2>
-        {{ user_profile.profile_picture }}
+        {% if user_profile.profile_picture %}
+            <img id='profile-pic' src="{{ user_profile.profile_picture.url }}" alt="{{ user_profile.user }}'s Profile Picture">
+        {% else %}
+            <p>No profile picture uploaded.</p>
+        {% endif %}
         <p><b>First Name:</b> {{ user_profile.first_name }}</p>
         <p><b>Last Name:</b> {{ user_profile.last_name }}</p>
         <p><b>Age:</b> {{ user_profile.age }}</p>
