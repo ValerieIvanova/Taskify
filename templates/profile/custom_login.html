@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="form">
-            <p>{{ form.non_field_errors }}</p>
+                <p>{{ form.non_field_errors }}</p>
 
                 <div class="control">
                     {{ form.username }}
@@ -24,8 +24,10 @@
 
                     <input type="hidden" name="next" value="{{ next }}">
                 </div>
-                <button>Login</button>
-                <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                <button class="login-btn">Login</button>
+                <p>Don't have an account?
+                    <button class="register-btn"><a href="{% url 'register' %}">Register</a></button>
+                </p>
             </div>
         </form>
     </div>

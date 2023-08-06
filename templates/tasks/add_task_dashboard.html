@@ -2,12 +2,25 @@
 {% block content %}
 
     <div class="add-task-form-wrapper">
-        <div class="add-task-form-container">
+        <div class="add-task-form-container content-pos">
+        <h1>Add New Task</h1>
             <form
                     action="{% url 'add_task' %}"
                     method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% for field in form %}
+                    {% if field.name == 'title' or field.name == 'description' or field.name == 'origin_url' %}
+                        <p>{{ field }}</p>
+                    {% else %}
+                    {{ field.label }}
+                    <p>{{ field }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
                 <button type="submit" value="Add" class="mt mb"><a class="add-task-button">Add</a></button>
             </form>
         </div>

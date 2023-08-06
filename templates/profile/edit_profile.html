@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="edit_profile_form_wrapper">
-        <div class="edit-profile-form-container">
+        <div class="edit-profile-form-container content-pos">
             <h1>Edit Profile</h1>
             <form
                     action="{% url 'edit_user_profile' pk=request.user.pk %}"

@@ -51,16 +51,17 @@
             <div class="nav-collapse">
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="{% url 'details_user_profile' pk=request.user.pk %}"><img
-                            src="
-                            {% if request.user.user_profile.profile_picture %}
-{{ request.user.user_profile.profile_picture.url }}
-{% else %}
-{% static 'assets/img/ui-sam.jpg' %}
-{% endif %}
-"
-                            class="img-circle"
-                            width="60"></a></p>
+                    <p class="centered">
+                        <a href="{% url 'details_user_profile' pk=request.user.pk %}">
+                            {% if request.user.userprofile.profile_picture %}
+                                <img src="{{ request.user.userprofile.profile_picture.url }}" class="img-circle"
+                                     width="60">
+                            {% else %}
+                                <img src="{% static 'assets/img/ui-sam.jpg' %}"
+                                     class="img-circle" width="60">
+                            {% endif %}
+                        </a>
+                    </p>
                     <h5 class="centered">{{ request.user.userprofile }}</h5>
 
                     <li class="mt">

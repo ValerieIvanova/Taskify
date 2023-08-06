@@ -375,6 +375,24 @@ div.about-info {
     position: relative;
 }
 
+.add-task-form-container {
+    width: 50%;
+}
+
+.add-task-form-container h1,
+.edit-task-form-container h1{
+    text-align: center;
+    margin-bottom: 6vh;
+}
+
+.edit-task-form-container {
+    width: 50%;
+}
+
+.edit-task-form-container form{
+    align-items: center;
+}
+
 .todo-container h2, form {
     text-align: center;
 }
@@ -403,13 +421,35 @@ div.about-info {
 .todo-container form select,
 .edit-profile-form-container input[type="text"],
 .edit-profile-form-container input[type="number"],
-.edit-profile-form-container input[type="email"] {
+.edit-profile-form-container input[type="email"],
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="email"],
+#add-task-form input[type="text"],
+#add-task-form input[type="date"],
+#add-task-form select,
+.add-task-form-container form input[type="text"],
+.add-task-form-container form textarea,
+.add-task-form-container form input[type="number"],
+.add-task-form-container form input[type="date"],
+.add-task-form-container form select,
+.edit-task-form-container input[type="text"],
+.edit-task-form-container input[type="number"],
+.edit-task-form-container input[type="date"],
+.edit-task-form-container textarea,
+.edit-task-form-container select {
     width: 50%;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid black;
     padding-bottom: 5px;
     padding-top: 5px;
+}
+
+.form input[type='text'],
+.form input[type='password'],
+.form input[type='email'] {
+    width: 70%;
 }
 
 .todo-container form input[type="text"]::placeholder {
@@ -502,6 +542,17 @@ button {
     justify-content: center;
 }
 
+.register-btn a,
+.login-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.login-btn,
+.register-btn{
+    margin-top: 5%;
+}
+
 .edit-task-button,
 .delete-task-button,
 .logout-button,
@@ -511,7 +562,9 @@ button {
 .add-task-button,
 .search-button,
 .edit-profile-button,
-.delete-profile-button {
+.delete-profile-button,
+.login-btn,
+.register-btn {
     margin-left: 10px;
     padding: 6px 10px;
     color: white;
@@ -519,6 +572,17 @@ button {
     background: #756b6a;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+}
+
+#add-task-form button[type="submit"],
+#add-task-form button[type="button"] {
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
+#calendar-form-wrapper h1 {
+    text-align: center;
+    padding: 6%;
 }
 
 .edit-task-button:hover,
@@ -622,8 +686,8 @@ button {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 15%;
-    top: 15%;
+    margin: auto;
+    margin-top: 10%;
 }
 
 
@@ -701,8 +765,11 @@ button {
     margin: auto;
     margin-top: -9px;
     padding: 30px;
-    background-color: white;
+    background-color: #d4d4d4a8;
+    border: 1px solid black;
+    border-radius: 6px;
     width: 175px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
 }
 
 .control {
@@ -747,7 +814,6 @@ button {
 #calendar-form-wrapper {
     position: relative;
     top: -70em;
-    height: 40vh;
     width: 40vw;
     margin: auto;
     background: rgba(224, 217, 210, 0.5);
