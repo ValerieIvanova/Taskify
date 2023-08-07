@@ -7,7 +7,7 @@ Task Details: Users can view detailed information about each task.
 Categories: Tasks can be assigned to different categories for better organization.
 Calendar View: Taskify utilizes the FullCalendar library to present tasks in a user-friendly calendar format.
 Add Tasks from Calendar: By clicking on a date, users can conveniently add new tasks directly from the calendar.
+Email Reminders: Stay on top of your tasks with email reminders. Taskify sends the user timely reminders for the tasks, helping him stay organized and productive. All the user has to do is set the reminder and on the given date and time a beautifuly styled email will notify him about the due date of the task.
 
 Coming soon:
 1. Responsive Design: Taskify is designed to work seamlessly across various devices, ensuring a smooth user experience.
-2. Reminders
