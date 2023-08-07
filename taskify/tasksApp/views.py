@@ -3,14 +3,11 @@ from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
-from django.utils import timezone
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from taskify.remindersApp.forms import ReminderAddForm
-from taskify.remindersApp.models import Reminder
 from taskify.tasksApp.forms import TaskAddForm, TaskEditForm
 from taskify.tasksApp.models import Task, Category, TaskStatus
 

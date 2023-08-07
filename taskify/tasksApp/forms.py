@@ -6,11 +6,11 @@ from taskify.tasksApp.models import Task, Category
 
 class TaskBaseForm(forms.ModelForm):
     start_date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'}),
+        widget=forms.DateInput(attrs={'type': 'date', 'value': timezone.now().date()}),
     )
 
     due_date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date'}),
+        widget=forms.DateInput(attrs={'type': 'date', 'value': timezone.now().date()}),
     )
 
     class Meta:
@@ -45,9 +45,7 @@ class TaskAddForm(TaskBaseForm):
         }
 
     def clean_start_date(self):
-        print(timezone.now())
         start_date = self.cleaned_data.get('start_date')
-        print(start_date)
         if start_date < timezone.now().date():
             raise forms.ValidationError('Start date cannot be in the past.')
         return start_date
