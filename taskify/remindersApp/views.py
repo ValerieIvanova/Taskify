@@ -1,11 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
+from taskify import settings
 from taskify.remindersApp.forms import ReminderAddForm
 from taskify.remindersApp.models import Reminder
 from taskify.tasksApp.models import Task
+from taskify.remindersApp.tasks import send_email_reminder
 
 
 class AddReminderView(LoginRequiredMixin, CreateView):
@@ -29,6 +32,13 @@ class AddReminderView(LoginRequiredMixin, CreateView):
         reminder = form.save()
         task.reminder = reminder
         task.save()
+
+        send_date = reminder.reminder_datetime
+        subject = f"Gentle Nudge: Don't Forget About Your Super Important Task!"
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [self.request.user.email]
+
+        send_email_reminder.apply_async(args=[task.title, task.due_date, task.user.username, subject, from_email, recipient_list], eta=send_date)
 
         return super().form_valid(form)
 

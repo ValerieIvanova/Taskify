@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'taskify.tasksApp',
     'taskify.remindersApp',
 
-    'colorfield'
+    'colorfield',
+    'celery'
 
 ]
 
@@ -134,3 +135,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'taskify2023@gmail.com'
 EMAIL_HOST_PASSWORD = 'xcbryjddmheosxgj'
+
+# Celery
+CELERY_BROKER_URL = 'redis://default:JrgPJQujcoNBdCOIR4qwbGFdjVGgiCtZ@redis-17416.c274.us-east-1-3.ec2.cloud.redislabs.com:17416'
+CELERY_RESULT_BACKEND = 'redis://default:JrgPJQujcoNBdCOIR4qwbGFdjVGgiCtZ@redis-17416.c274.us-east-1-3.ec2.cloud.redislabs.com:17416'
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_TIMEZONE = 'Europe/Sofia'

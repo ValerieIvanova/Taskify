@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body style="display: flex;
+			justify-content: center;">
+<div style="display: flex;
+			justify-content: center;
+			border: 3px solid rgb(65, 63, 63);
+			border-radius: 20px;
+			margin: 2% auto;
+			max-width: 620px;">
+    <div>
+        <h1 style="			text-align: center;
+                color: rgb(65, 63, 63);
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+
+            Hey there, {{ username }} 🚀 !</h1>
+
+        <p style="max-width: 620px;
+            padding: 20px 20px 0 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            Just a friendly reminder that you've got a mission: {{ task_title }}!
+            The countdown is set for {{ task_due_date }}.
+            Keep your eyes on the prize, and let's make this happen together!
+        </p>
+        <p style="max-width: 620px;
+            padding: 20px 20px 0 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            Stay fabulous,
+            <br>
+            <a href="{% url 'dashboard' %}">
+                <img style="width: 30%;
+            margin-top: 10px;
+            margin-left: -4px;"
+                     src="https://taskify.co/wp-content/uploads/2023/01/Taskify_1.png"
+                     alt="Logo">
+            </a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

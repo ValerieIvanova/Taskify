@@ -20,12 +20,12 @@ class ReminderAddForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        reminder_date = cleaned_data.get('reminder_datetime').date()
+        reminder_date = cleaned_data.get('reminder_datetime')
         task_due_date = self.task.due_date
 
-        if reminder_date < timezone.now().date():
-            raise ValidationError('Reminder date cannot be in the past.')
-        if reminder_date and task_due_date and reminder_date > task_due_date:
+        if reminder_date < timezone.now():
+            raise ValidationError('Reminder date and time cannot be in the past.')
+        if reminder_date and task_due_date and reminder_date.date() > task_due_date:
             raise ValidationError('Reminder date must be before the due date of the task.')
 
         return cleaned_data

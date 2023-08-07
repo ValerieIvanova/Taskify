@@ -76,10 +76,6 @@ class Task(models.Model):
 
     )
 
-    enable_reminders = models.BooleanField(
-        default=False
-    )
-
     priority = models.PositiveSmallIntegerField(
         null=True,
         blank=True,
