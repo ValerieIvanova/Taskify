@@ -2,7 +2,7 @@ from django.contrib.auth import login, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from taskify.mixins import AnonymousRequiredMixin
@@ -54,7 +54,7 @@ class CustomLogoutView(LoginRequiredMixin, LogoutView):
         return redirect('dashboard')
 
 
-class EditUserProfileView(LoginRequiredMixin, UpdateView):
+class UserProfileEdit(LoginRequiredMixin, UpdateView):
     model = UserProfile
     fields = ['first_name', 'last_name', 'age', 'profile_picture']
     template_name = 'profile/edit_profile.html'
@@ -63,13 +63,13 @@ class EditUserProfileView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('details_user_profile', kwargs={'pk': self.object.user.id})
 
 
-class DetailsUserProfileView(LoginRequiredMixin, DetailView):
+class UserProfileDetails(LoginRequiredMixin, DetailView):
     model = UserProfile
     template_name = 'profile/details_profile.html'
     context_object_name = 'user_profile'
 
 
-class DeleteUserProfileView(LoginRequiredMixin, DeleteView):
+class UserProfileDelete(LoginRequiredMixin, DeleteView):
     model = UserModel
     template_name = 'profile/delete_profile.html'
     success_url = reverse_lazy('index')

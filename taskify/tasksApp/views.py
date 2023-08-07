@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -80,6 +80,12 @@ class TaskDetails(LoginRequiredMixin, DetailView):
     template_name = 'tasks/details_task.html'
     context_object_name = 'task'
 
+    def get_object(self, queryset=None):
+        task = super().get_object(queryset)
+        if task.user != self.request.user:
+            raise Http404
+        return task
+
 
 class TaskEdit(LoginRequiredMixin, UpdateView):
     model = Task
@@ -89,12 +95,24 @@ class TaskEdit(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('details_task', kwargs={'pk': self.object.pk})
 
+    def get_object(self, queryset=None):
+        task = super().get_object(queryset)
+        if task.user != self.request.user:
+            raise Http404
+        return task
+
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete_task.html'
     success_url = reverse_lazy('dashboard')
     context_object_name = 'task'
+
+    def get_object(self, queryset=None):
+        task = super().get_object(queryset)
+        if task.user != self.request.user:
+            raise Http404
+        return task
 
 
 @login_required

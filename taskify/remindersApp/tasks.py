@@ -11,13 +11,14 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 
 @shared_task
-def send_email_reminder(task_title, task_due_date, username, subject, from_email, recipient_list):
+def send_email_reminder(task_title, task_due_date, username, reminder_message, subject, from_email, recipient_list):
     html_message = render_to_string(
         template_name='reminders/email_reminder.html',
         context={
             'task_title': task_title,
             'task_due_date': task_due_date,
             'username': username,
+            'reminder_message': reminder_message,
         }
     )
     plain_message = strip_tags(html_message)

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils import timezone
 
-from taskify.tasksApp.models import Task, Category
+from taskify.tasksApp.models import Task
 
 
 class TaskBaseForm(forms.ModelForm):
