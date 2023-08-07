@@ -34,7 +34,7 @@
 
             {% for task in tasks %}
                 {% if task.status.status != 'Completed' %}
-                <li>
+                <li class="li-item">
                     <div class="task-item">
                         <div class="checkbox-title">
                             <div class="checkbox-container">
@@ -64,7 +64,7 @@
                 </li>
                 {% elif task.status.status == 'Completed' and status_input == 'Completed' %}
 
-                <li>
+                <li class="li-item">
                     <div class="task-item">
                         <div class="checkbox-title">
                             <div class="checkbox-container">

@@ -6,14 +6,18 @@ document.addEventListener("DOMContentLoaded", function () {
             const taskId = this.id.split("-")[1];
             const taskContainer = this.closest(".task-item")
             const checkboxLabel = taskContainer.querySelector(".checkbox-label");
-            const checkboxInput = taskContainer.querySelector(".completed-checkbox");
+            const liItem = taskContainer.closest('li');
 
             if (this.checked) {
                 if (checkboxLabel.classList.contains("expired")) {
                     checkboxLabel.classList.remove("expired");
                 }
                 await markTaskAsCompleted(taskId);
+                liItem.classList.add('li-item-completed');
                 checkboxLabel.classList.add("completed");
+                setTimeout(() => {
+                    liItem.remove();
+                }, 2000);
             }
         });
     });

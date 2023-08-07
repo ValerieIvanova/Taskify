@@ -1009,6 +1009,11 @@ a.admin-link span {
     background-color: #4CAF50;
 }
 
+.li-item-completed {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
 .expired {
     background-color: #b22319;
 }
