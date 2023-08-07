@@ -126,7 +126,8 @@ class Task(models.Model):
         return self.title
 
     def delete(self, *args, **kwargs):
-        self.reminder.delete()
+        if self.reminder:
+            self.reminder.delete()
         super().delete(*args, **kwargs)
 
     class Meta:

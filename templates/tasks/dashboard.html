@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
     <div class="todo-container content-pos">
@@ -32,12 +33,13 @@
             <div class="add-task-dash-btn"><a class="add-task-button" href="{% url 'add_task' %}">Add New Task</a></div>
 
             {% for task in tasks %}
+                {% if task.status.status != 'Completed' %}
                 <li>
                     <div class="task-item">
                         <div class="checkbox-title">
                             <div class="checkbox-container">
-                                <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox">
-                                <label for="checkbox-{{ task.id }}" class="checkbox-label"></label>
+                                <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox completed-checkbox" {% if task.status.status == 'Completed' %}checked{% endif %}>
+                                <label for="checkbox-{{ task.id }}" class="checkbox-label {% if task.status.status == 'Completed' %}completed{% elif task.status.status != 'Completed' and task.due_date < today %}expired{% endif %}"></label>
                             </div>
                             <span class="task-title">{{ task.title }}</span>
                         </div>
@@ -60,9 +62,37 @@
                         </div>
                     </div>
                 </li>
+                {% elif task.status.status == 'Completed' and status_input == 'Completed' %}
+
+                <li>
+                    <div class="task-item">
+                        <div class="checkbox-title">
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox completed-checkbox" checked>
+                                <label for="checkbox-{{ task.id }}" class="checkbox-label completed"></label>
+                            </div>
+                            <span class="task-title">{{ task.title }}</span>
+                        </div>
+                        <span class="task-due-date">Due Date:
+                            {% if task.due_date %}
+                                {{ task.due_date }}
+                            {% else %}
+                                No due date
+                            {% endif %}
+                        </span>
+                        <div class="task-buttons-details">
+                            <a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+
+
             {% empty %}
                 <h3>No Tasks. Enjoy some free time!</h3>
             {% endfor %}
         </ul>
     </div>
+
+    <script src="{% static 'assets/js/checkbox-color-state-change.js' %}"></script>
 {% endblock %}

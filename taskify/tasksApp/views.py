@@ -25,6 +25,7 @@ class Dashboard(LoginRequiredMixin, ListView):
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['categories'] = Category.objects.all()
         context['statuses'] = TaskStatus.objects.all()
+        context['today'] = datetime.today().date()
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
@@ -133,3 +134,13 @@ def task_list(request):
             'category_color': task.category.color,
         })
     return JsonResponse(tasks_list, safe=False)
+
+
+def mark_task_as_completed(request, task_id):
+    try:
+        task = Task.objects.get(id=task_id)
+        task.status = TaskStatus.objects.get(status='Completed')
+        task.save()
+        return JsonResponse({'success': True})
+    except Task.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Task not found'})

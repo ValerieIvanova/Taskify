@@ -1003,3 +1003,12 @@ a.admin-link span {
     border: #424a5d 1px solid;
     box-shadow: #282e36 0 0 10px;
 }
+
+/* Style for the completed checkbox */
+.completed {
+    background-color: #4CAF50;
+}
+
+.expired {
+    background-color: #b22319;
+}
