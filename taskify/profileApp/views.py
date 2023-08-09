@@ -6,7 +6,7 @@ from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 
 from taskify.mixins import AnonymousRequiredMixin
-from taskify.profileApp.forms import UserCreateForm, UserLoginForm
+from taskify.profileApp.forms import UserCreateForm, UserLoginForm, UserProfileEditForm
 from taskify.profileApp.models import UserProfile
 
 UserModel = get_user_model()
@@ -56,7 +56,7 @@ class CustomLogoutView(LoginRequiredMixin, LogoutView):
 
 class UserProfileEdit(LoginRequiredMixin, UpdateView):
     model = UserProfile
-    fields = ['first_name', 'last_name', 'age', 'profile_picture']
+    form_class = UserProfileEditForm
     template_name = 'profile/edit_profile.html'
 
     def get_success_url(self):

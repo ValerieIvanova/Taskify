@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
+from taskify.profileApp.models import UserProfile
 
 UserModel = get_user_model()
 
@@ -48,3 +50,15 @@ class UserLoginForm(AuthenticationForm):
             'class': 'password-field'
         }),
     )
+
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['first_name', 'last_name', 'age', 'profile_picture']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
+            'age': forms.NumberInput(attrs={'placeholder': 'Age'}),
+            'profile_picture': forms.ClearableFileInput(attrs={'placeholder': 'Choose profile picture'}),
+        }
