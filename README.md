@@ -1,5 +1,4 @@
-![IMG_7863](https://github.com/ValerieIvanova/Taskify/assets/105737781/223cfac4-00da-4acc-aa15-4083c2e3efb3)
-![Screenshot 2023-08-10 at 17 00 15](https://github.com/ValerieIvanova/Taskify/assets/105737781/26c8244d-6ace-49de-9912-6a7285d3397e)Thi website is securely hosted on the PythonAnywhere platform, providing a robust and reliable environment for seamless user access.<br>
+This website is securely hosted on the PythonAnywhere platform, providing a robust and reliable environment for seamless user access.<br>
 -> https://taskify.pythonanywhere.com/
 
 Taskify is a simple and calming task manager website designed for personal use. It allows users to register, login, and logout. The website features a delightful login and registration form with an owl that playfully hides its eyes when the user inputs their password. With Taskify, users can efficiently manage their tasks, create, update, and delete them as needed. Each task can be associated with a category for easy organization.
