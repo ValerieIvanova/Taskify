@@ -1,6 +1,20 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASKIFY.</title>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+</head>
+
+<body class="overlay">
+
+<main class="main-content delete-profile-page">
+
     <div class="delete-profile-form-wrapper">
         <div class="img-form-wrapper">
             <img class="img-delete-profile"
@@ -18,4 +32,14 @@
             </form>
         </div>
     </div>
-{% endblock %}
+
+</main>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- External js files -->
+<script src={% static 'assets/js/side-bar-toggle.js' %}></script>
+<script src={% static 'assets/js/datetime.js' %}></script>
+
+</body>
+</html>

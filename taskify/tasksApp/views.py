@@ -1,4 +1,4 @@
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
 from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
@@ -132,8 +132,11 @@ def task_list(request):
     tasks_list = []
 
     for task in tasks:
+        color = task.category.color
         origin_url = request.path
         task.origin_url = origin_url
+        if task.status.status == 'Completed':
+            color = 'green'
         task.save()
 
         due_date = task.due_date + timedelta(days=1)
@@ -146,7 +149,7 @@ def task_list(request):
             'start': start_date_iso,
             'end': due_date_iso,
             'category': task.category.name,
-            'category_color': task.category.color,
+            'category_color': color,
         })
     return JsonResponse(tasks_list, safe=False)
 

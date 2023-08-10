@@ -42,7 +42,9 @@
                 <div id="datetime" class="datetime"></div>
                 {% if request.user.is_authenticated %}
                     <details class="small-screen-nav">
-                        <summary>Navigation</summary>
+                        <summary>
+                            <div class="fa fa-bars tooltips"></div>
+                        </summary>
                         <nav>
                             <a href="{% url 'dashboard' %}">
                                 Dashboard
