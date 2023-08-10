@@ -22,7 +22,7 @@
             <form class="delete-profile-form" method="post"
                   action="{% url 'delete_user_profile' request.user.pk %}">
                 {% csrf_token %}
-                <h2>We aro so sad to see you go...</h2>
+                <h2>We are so sad to see you go...</h2>
                 <h3>Are you sure you want to delete your profile?</h3>
                 <div class="task-buttons">
                     <button type="submit" class="delete-task-button">Delete</button>

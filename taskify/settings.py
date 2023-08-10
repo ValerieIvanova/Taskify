@@ -2,21 +2,13 @@ import os
 from pathlib import Path
 import certifi
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+SECRET_KEY = os.environ.get('SECRET_KEY', 'purple_unicorn')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', None)
+DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
-
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
-
-# Application definition
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -112,6 +104,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -139,8 +132,3 @@ EMAIL_HOST_PASSWORD = 'xcbryjddmheosxgj'
 # Celery
 CELERY_BROKER_URL = 'redis://default:JrgPJQujcoNBdCOIR4qwbGFdjVGgiCtZ@redis-17416.c274.us-east-1-3.ec2.cloud.redislabs.com:17416'
 CELERY_RESULT_BACKEND = 'redis://default:JrgPJQujcoNBdCOIR4qwbGFdjVGgiCtZ@redis-17416.c274.us-east-1-3.ec2.cloud.redislabs.com:17416'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_RESULT_BACKEND = 'django-db'
-# CELERY_TIMEZONE = 'Europe/Sofia'
