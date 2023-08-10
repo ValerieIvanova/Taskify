@@ -33,6 +33,7 @@ Key Features:
 ![Screenshot 2023-08-10 at 17 13 34](https://github.com/ValerieIvanova/Taskify/assets/105737781/0d66817a-748f-4a48-bb27-2be824691108)
 
 13. Responsive Design: Taskify is designed to work seamlessly across various devices, ensuring a smooth user experience.
-![IMG_7865](https://github.com/ValerieIvanova/Taskify/assets/105737781/5681df3d-b723-478c-b52b-275837e14a78)
 ![IMG_7864](https://github.com/ValerieIvanova/Taskify/assets/105737781/9801de7b-e0eb-4355-afa5-eb5226d4eb0a)
 ![IMG_7863](https://github.com/ValerieIvanova/Taskify/assets/105737781/ff2942ce-4475-4cac-9aa9-d167e705011c)
+![IMG_7866](https://github.com/ValerieIvanova/Taskify/assets/105737781/01bd8ef7-0423-43a8-9f1c-456d981fb0b5)
+
