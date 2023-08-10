@@ -1,4 +1,4 @@
-Thi website is securely hosted on the PythonAnywhere platform, providing a robust and reliable environment for seamless user access.
+Thi website is securely hosted on the PythonAnywhere platform, providing a robust and reliable environment for seamless user access.<br>
 -> https://taskify.pythonanywhere.com/
 
 Taskify is a simple and calming task manager website designed for personal use. It allows users to register, login, and logout. The website features a delightful login and registration form with an owl that playfully hides its eyes when the user inputs their password. With Taskify, users can efficiently manage their tasks, create, update, and delete them as needed. Each task can be associated with a category for easy organization.
