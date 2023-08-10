@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, Http404
-from django.shortcuts import get_object_or_404, redirect, render
+from django.http import Http404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView
 
 from taskify import settings
 from taskify.remindersApp.forms import ReminderAddForm
@@ -30,6 +30,7 @@ class ReminderAdd(LoginRequiredMixin, CreateView):
         return kwargs
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         task = form.task
         reminder = form.save()
         task.reminder = reminder

@@ -1,4 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+
+UserModel = get_user_model()
 
 
 class Reminder(models.Model):
@@ -8,6 +12,13 @@ class Reminder(models.Model):
     )
 
     message = models.TextField(
+        null=True,
+        blank=True
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
         null=True,
         blank=True
     )

@@ -17,7 +17,7 @@ class TaskStatusAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'status', 'created_on', 'user')
+    list_display = ('title', 'category', 'status', 'reminder', 'created_on', 'user')
     list_filter = ('status', 'category', 'user')
     search_fields = ('title', 'description', 'user')
     ordering = ('-created_on',)

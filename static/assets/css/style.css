@@ -187,6 +187,7 @@ summary {
     background: #756a6a;
     top: 0;
     bottom: 0;
+    overflow: scroll;
 }
 
 #sidebar h5 {
@@ -238,6 +239,10 @@ ul.sidebar-menu li a {
     padding: 15px 0 15px 10px;
     font-size: 12px;
     outline: none;
+}
+
+.nav-collapse {
+    margin-bottom: 4rem;
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {

@@ -6,6 +6,7 @@ from taskify.remindersApp.models import Reminder
 
 
 class ReminderAddForm(forms.ModelForm):
+
     class Meta:
         model = Reminder
         fields = ['reminder_datetime', 'message']

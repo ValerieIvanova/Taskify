@@ -186,6 +186,10 @@
         display: none;
     }
 
+    #id_message {
+        max-width: 70%;
+    }
+
     .main-content {
         margin-top: 15rem;
     }
