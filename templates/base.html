@@ -40,6 +40,28 @@
                     </div>
                 {% endif %}
                 <div id="datetime" class="datetime"></div>
+                {% if request.user.is_authenticated %}
+                    <details class="small-screen-nav">
+                        <summary>Navigation</summary>
+                        <nav>
+                            <a href="{% url 'dashboard' %}">
+                                Dashboard
+                            </a>
+                            <a href="{% url 'task_calendar' %}">
+                                Task Calendar
+                            </a>
+                            <a href="{% url 'details_user_profile' pk=request.user.pk %}">
+                                Profile
+                            </a>
+                            <a href="{% url 'about' %}">
+                                About
+                            </a>
+                            <a href="{% url 'logout' %}">
+                                Logout
+                            </a>
+                        </nav>
+                    </details>
+                {% endif %}
             </ul>
         </div>
     </header>

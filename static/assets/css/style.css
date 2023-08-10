@@ -47,6 +47,42 @@ a, a:hover, a:focus {
     margin-top: 0.4em;
 }
 
+.small-screen-nav {
+    display: none;
+}
+
+
+summary::before {
+    font-weight: 900;
+    font-size: 24px;
+    margin-right: 10px; /* Adjust as needed */
+}
+
+/* Style the summary element as needed */
+summary {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+#container > header > div.top-menu > ul > details > nav > a {
+    text-decoration: none;
+    color: white;
+    background-color: #756b6b;
+    padding: 0.2em;
+    border: #424a5d 1px solid;
+    border-radius: 6px;
+    width: 6rem;
+    box-shadow: #282e36 0 0 10px;
+    margin: 6px;
+    display: inline-flex;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
 .intro-page-wrapper {
     width: 40%;
     height: 50%;
@@ -380,7 +416,7 @@ div.about-info {
 }
 
 .add-task-form-container h1,
-.edit-task-form-container h1{
+.edit-task-form-container h1 {
     text-align: center;
     margin-bottom: 6vh;
 }
@@ -389,7 +425,7 @@ div.about-info {
     width: 50%;
 }
 
-.edit-task-form-container form{
+.edit-task-form-container form {
     align-items: center;
 }
 
@@ -549,7 +585,7 @@ button {
 }
 
 .login-btn,
-.register-btn{
+.register-btn {
     margin-top: 5%;
 }
 
@@ -813,7 +849,7 @@ button {
 
 #calendar-form-wrapper {
     position: relative;
-    top: -70em;
+    top: -60rem;
     width: 40vw;
     margin: auto;
     background: rgba(224, 217, 210, 0.5);
