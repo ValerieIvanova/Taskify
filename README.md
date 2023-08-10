@@ -20,8 +20,9 @@ Key Features:
 ![Screenshot 2023-08-10 at 17 01 21](https://github.com/ValerieIvanova/Taskify/assets/105737781/18374380-9a89-49a7-99ac-6b13bd6334e4)
 
 6. Add Tasks from Calendar: By clicking on a date, users can conveniently add new tasks directly from the calendar.
-11. Email Reminders: Taskify features an advanced reminder system that leverages the power of Celery and Redis to deliver seamless and timely notifications to the users. Through this sophisticated integration, users can set reminders for specific dates and times, ensuring they never miss important tasks or appointments.
-<b>How It Works?<b>
+11. Email Reminders: Taskify features an advanced reminder system that leverages the power of Celery and Redis to deliver seamless and timely notifications to the users. Through this sophisticated integration, users can set reminders for specific dates and times, ensuring they never miss important tasks or appointments.<br>
+
+<b>How It Works?</b>
 -Celery Task Queue: Behind the scenes, Celery, a powerful distributed task queue, manages the scheduling and execution of reminder tasks. This ensures efficient handling of reminders without impacting the overall system performance.
 
 -Redis for Efficient Data Handling: Redis, an in-memory data structure store, acts as the message broker for Celery. It efficiently manages task messages, enabling smooth communication between different components of the reminder system.
