@@ -1,12 +1,14 @@
 from django.contrib.auth.mixins import AccessMixin
 from django.http import Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
+
+from taskify.tasksApp.models import Task
 
 
 class AnonymousRequiredMixin(AccessMixin):
     """
     Mixin to allow only anonymous users to access the view.
-    Redirects authenticated users away from the view.
+    Redirects authenticated users to the Dashboard page.
     """
 
     def handle_no_permission(self):
@@ -32,3 +34,13 @@ class UserOwnershipMixin:
         obj = super().get_object(queryset=queryset)
         self.check_user_ownership(obj)
         return obj
+
+    def get_task_by_pk(self):
+        task = get_object_or_404(Task, pk=self.kwargs['pk'])
+        self.check_user_ownership(task)
+        return task
+
+    def get_task_by_reminder(self):
+        task = get_object_or_404(Task, reminder=self.object)
+        self.check_user_ownership(task)
+        return task

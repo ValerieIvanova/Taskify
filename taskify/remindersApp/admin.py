@@ -5,4 +5,4 @@ from taskify.remindersApp.models import Reminder
 
 @admin.register(Reminder)
 class ReminderAdmin(admin.ModelAdmin):
-    list_display = ('reminder_datetime', 'message', 'user')
+    list_display = ('pk', 'reminder_datetime', 'message', 'user')
