@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from taskify.profileApp.models import CustomUser, UserProfile
+from taskify.profileApp.models import UserProfile
 
 UserModel = get_user_model()
 

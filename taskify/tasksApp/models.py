@@ -12,8 +12,10 @@ UserModel = get_user_model()
 
 
 class Category(models.Model):
+    NAME_MAX_LENGTH = 100
+
     name = models.CharField(
-        max_length=100,
+        max_length=NAME_MAX_LENGTH,
         null=False,
         blank=False,
     )
@@ -32,8 +34,10 @@ class Category(models.Model):
 
 
 class TaskStatus(models.Model):
+    STATUS_MAX_LENGTH = 100
+
     status = models.CharField(
-        max_length=100,
+        max_length=STATUS_MAX_LENGTH,
         null=False,
         blank=False,
         default='Not Started'
@@ -47,10 +51,14 @@ class TaskStatus(models.Model):
 
 
 class Task(models.Model):
+    TITLE_MAX_LENGTH = 100
+    PRIORITY_MAX_VALUE = 5
+    ORIGIN_URL_MAX_LENGTH = 255
+
     title = models.CharField(
-        max_length=100,
         null=False,
         blank=False,
+        max_length=TITLE_MAX_LENGTH,
     )
 
     description = models.TextField(
@@ -66,14 +74,12 @@ class Task(models.Model):
     start_date = models.DateField(
         null=False,
         blank=False,
-
     )
 
     due_date = models.DateField(
         null=True,
         blank=True,
         default=django.utils.timezone.now,
-
     )
 
     priority = models.PositiveSmallIntegerField(
@@ -81,19 +87,20 @@ class Task(models.Model):
         blank=True,
         default=1,
         validators=[
-            MaxValueValidator(5)
+            MaxValueValidator(PRIORITY_MAX_VALUE, f'Priority must be between 1 and {PRIORITY_MAX_VALUE}')
         ]
     )
 
     origin_url = models.CharField(
         null=True,
         blank=True,
-        max_length=255
+        max_length=ORIGIN_URL_MAX_LENGTH,
     )
 
     category = models.ForeignKey(
         Category,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_DEFAULT,
+        default=1,
         null=False,
         blank=False,
         limit_choices_to={'name__isnull': False},
@@ -101,8 +108,8 @@ class Task(models.Model):
 
     status = models.ForeignKey(
         TaskStatus,
-        on_delete=models.CASCADE,
-        default=2,
+        on_delete=models.SET_DEFAULT,
+        default=1,
         limit_choices_to={'status__isnull': False},
         null=True,
         blank=True

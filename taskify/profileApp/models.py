@@ -9,8 +9,11 @@ from taskify.profileApp.managers import CustomUserManager
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    USERNAME_MAX_LENGTH = 150
+    EMAIL_MAX_LENGTH = 254
+
     username = models.CharField(
-        max_length=150,
+        max_length=USERNAME_MAX_LENGTH,
         unique=True,
         null=False,
         blank=False,
@@ -18,7 +21,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
 
     email = models.EmailField(
-        max_length=254,
+        max_length=EMAIL_MAX_LENGTH,
         unique=True,
         null=False,
         blank=False
@@ -54,20 +57,23 @@ UserModel = get_user_model()
 
 
 class UserProfile(models.Model):
+    FIRST_NAME_MAX_LENGTH = 30
+    LAST_NAME_MAX_LENGTH = 30
+
     user = models.OneToOneField(
         UserModel,
         on_delete=models.CASCADE
     )
 
     first_name = models.CharField(
-        max_length=30,
+        max_length=FIRST_NAME_MAX_LENGTH,
         null=True,
         blank=True,
         verbose_name='First Name',
     )
 
     last_name = models.CharField(
-        max_length=30,
+        max_length=LAST_NAME_MAX_LENGTH,
         null=True,
         blank=True,
         verbose_name='Last Name',

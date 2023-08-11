@@ -1,14 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
-
 from taskify import settings
 from taskify.mixins import UserOwnershipMixin
 from taskify.remindersApp.forms import ReminderAddForm
 from taskify.remindersApp.models import Reminder
-from taskify.tasksApp.models import Task
 from taskify.remindersApp.tasks import send_email_reminder
 
 
