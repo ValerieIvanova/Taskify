@@ -9,7 +9,7 @@ UserModel = get_user_model()
 
 @admin.register(UserModel)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'is_superuser', 'is_staff', 'is_active', 'date_joined')
+    list_display = ('id', 'username', 'email', 'is_superuser', 'is_staff', 'is_active', 'date_joined')
     search_fields = ('username',)
     list_filter = ('username', 'is_staff', 'is_active')
     ordering = ('date_joined',)
