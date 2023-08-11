@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from taskify.mixins import UserOwnershipMixin
 from taskify.tasksApp.forms import TaskAddForm, TaskEditForm
 from taskify.tasksApp.models import Task, Category, TaskStatus
 
@@ -75,44 +76,29 @@ class TaskAdd(LoginRequiredMixin, CreateView):
         return reverse_lazy('dashboard')
 
 
-class TaskDetails(LoginRequiredMixin, DetailView):
+class TaskDetails(LoginRequiredMixin, UserOwnershipMixin, DetailView):
     model = Task
     template_name = 'tasks/details_task.html'
     context_object_name = 'task'
-
-    def get_object(self, queryset=None):
-        task = super().get_object(queryset)
-        if task.user != self.request.user:
-            raise Http404
-        return task
+    user_obj = 'user'
 
 
-class TaskEdit(LoginRequiredMixin, UpdateView):
+class TaskEdit(LoginRequiredMixin, UserOwnershipMixin, UpdateView):
     model = Task
     form_class = TaskEditForm
     template_name = 'tasks/edit_task.html'
+    user_obj = 'user'
 
     def get_success_url(self):
         return reverse_lazy('details_task', kwargs={'pk': self.object.pk})
 
-    def get_object(self, queryset=None):
-        task = super().get_object(queryset)
-        if task.user != self.request.user:
-            raise Http404
-        return task
 
-
-class TaskDelete(LoginRequiredMixin, DeleteView):
+class TaskDelete(LoginRequiredMixin, UserOwnershipMixin, DeleteView):
     model = Task
     template_name = 'tasks/delete_task.html'
     success_url = reverse_lazy('dashboard')
     context_object_name = 'task'
-
-    def get_object(self, queryset=None):
-        task = super().get_object(queryset)
-        if task.user != self.request.user:
-            raise Http404
-        return task
+    user_obj = 'user'
 
 
 @login_required
