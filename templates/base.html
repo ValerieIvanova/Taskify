@@ -67,10 +67,8 @@
             </ul>
         </div>
     </header>
-    <!--header end-->
 
     {% if request.user.is_authenticated %}
-        <!--sidebar start-->
         <aside id="sidebar">
             <div class="nav-collapse">
                 <ul class="sidebar-menu" id="nav-accordion">
@@ -123,14 +121,10 @@
                             <i class="fa fa-sign-out-alt"></i>
                             <span>Logout</span>
                         </a>
-
                     </li>
-
                 </ul>
-                <!-- sidebar menu end-->
             </div>
         </aside>
-        <!--sidebar end-->
     {% endif %}
 </section>
 

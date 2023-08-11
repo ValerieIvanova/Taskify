@@ -1,30 +1,27 @@
-    // Get the current date and time
-    function getCurrentDateTime() {
-        let currentDate = new Date();
+function getCurrentDateTime() {
+    let currentDate = new Date();
 
-        // Format
-        let options = {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: false
-        };
-        return currentDate.toLocaleDateString('en-US', options);
-    }
+    // Format
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false
+    };
+    return currentDate.toLocaleDateString('en-US', options);
+}
 
-    // Update the date and time element periodically
-    function updateDateTime() {
-        let datetimeElement = document.getElementById('datetime');
+// Update the date and time element periodically
+function updateDateTime() {
+    let datetimeElement = document.getElementById('datetime');
 
-        // Update the content
-        datetimeElement.textContent = getCurrentDateTime();
+    datetimeElement.textContent = getCurrentDateTime();
 
-        // Schedule the next update after 1 second
-        setTimeout(updateDateTime, 1000);
-    }
+    // Schedule the next update after 1 second
+    setTimeout(updateDateTime, 1000);
+}
 
-    // Start updating the date and time
-    updateDateTime();
+updateDateTime();
