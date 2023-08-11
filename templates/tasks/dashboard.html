@@ -34,57 +34,61 @@
 
             {% for task in tasks %}
                 {% if task.status.status != 'Completed' %}
-                <li class="li-item">
-                    <div class="task-item">
-                        <div class="checkbox-title">
-                            <div class="checkbox-container">
-                                <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox completed-checkbox" {% if task.status.status == 'Completed' %}checked{% endif %}>
-                                <label for="checkbox-{{ task.id }}" class="checkbox-label {% if task.status.status == 'Completed' %}completed{% elif task.status.status != 'Completed' and task.due_date < today %}expired{% endif %}"></label>
+                    <li class="li-item">
+                        <div class="task-item">
+                            <div class="checkbox-title">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="checkbox-{{ task.id }}"
+                                           class="checkbox completed-checkbox"
+                                           {% if task.status.status == 'Completed' %}checked{% endif %}>
+                                    <label for="checkbox-{{ task.id }}"
+                                           class="checkbox-label {% if task.status.status == 'Completed' %}completed{% elif task.status.status != 'Completed' and task.due_date < today %}expired{% endif %}"></label>
+                                </div>
+                                <span class="task-title">{{ task.title }}</span>
                             </div>
-                            <span class="task-title">{{ task.title }}</span>
-                        </div>
-                        <span class="task-due-date">Due Date:
-                            {% if task.due_date %}
-                                {{ task.due_date }}
-                            {% else %}
-                                No due date
-                            {% endif %}
+                            <span class="task-due-date">Due Date:
+                                {% if task.due_date %}
+                                    {{ task.due_date }}
+                                {% else %}
+                                    No due date
+                                {% endif %}
                         </span>
-                        <div class="task-buttons-details">
-                            {% if not task.reminder %}
-                                <a href="{% url 'add_reminder' task.pk %}" class="add-reminder-button">Set a
-                                    reminder</a>
-                            {% else %}
-                                <a href="" class="reminder-active">{{ task.reminder }}</a>
+                            <div class="task-buttons-details">
+                                {% if not task.reminder %}
+                                    <a href="{% url 'add_reminder' task.pk %}" class="add-reminder-button">Set a
+                                        reminder</a>
+                                {% else %}
+                                    <a href="" class="reminder-active">{{ task.reminder }}</a>
 
-                            {% endif %}
-                            <a href="{% url 'details_task' task.pk %}" class="details-task-button">Details</a>
+                                {% endif %}
+                                <a href="{% url 'details_task' task.pk %}" class="details-task-button">Details</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 {% elif task.status.status == 'Completed' and status_input == 'Completed' %}
 
-                <li class="li-item">
-                    <div class="task-item">
-                        <div class="checkbox-title">
-                            <div class="checkbox-container">
-                                <input type="checkbox" id="checkbox-{{ task.id }}" class="checkbox completed-checkbox" checked>
-                                <label for="checkbox-{{ task.id }}" class="checkbox-label completed"></label>
+                    <li class="li-item">
+                        <div class="task-item">
+                            <div class="checkbox-title">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="checkbox-{{ task.id }}"
+                                           class="checkbox completed-checkbox" checked>
+                                    <label for="checkbox-{{ task.id }}" class="checkbox-label completed"></label>
+                                </div>
+                                <span class="task-title">{{ task.title }}</span>
                             </div>
-                            <span class="task-title">{{ task.title }}</span>
-                        </div>
-                        <span class="task-due-date">Due Date:
-                            {% if task.due_date %}
-                                {{ task.due_date }}
-                            {% else %}
-                                No due date
-                            {% endif %}
+                            <span class="task-due-date">Due Date:
+                                {% if task.due_date %}
+                                    {{ task.due_date }}
+                                {% else %}
+                                    No due date
+                                {% endif %}
                         </span>
-                        <div class="task-buttons-details">
-                            <a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a>
+                            <div class="task-buttons-details">
+                                <a href="{% url 'delete_task' task.pk %}" class="delete-task-button">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
                 {% endif %}
 
             {% empty %}

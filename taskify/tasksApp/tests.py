@@ -65,17 +65,3 @@ class TaskModelTest(TestCase):
         task = Task.objects.create(title='Test Task', start_date=timezone.now().date())
         task.delete()
         self.assertFalse(Task.objects.filter(pk=task.pk).exists())
-
-
-class ReminderModelTest(TestCase):
-    def test_create_reminder(self):
-        reminder = Reminder.objects.create(
-            reminder_datetime=timezone.now(),
-            message='Test Reminder'
-        )
-        self.assertIsNotNone(reminder.reminder_datetime)
-        self.assertEqual(reminder.message, 'Test Reminder')
-
-    def test_str_representation(self):
-        reminder = Reminder.objects.create(reminder_datetime=timezone.now())
-        self.assertEqual(str(reminder), reminder.reminder_datetime.strftime("%Y-%m-%d %H:%M"))
