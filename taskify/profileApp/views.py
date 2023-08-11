@@ -1,11 +1,12 @@
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 
-from taskify.mixins import AnonymousRequiredMixin
+from taskify.mixins import AnonymousRequiredMixin, UserOwnershipMixin
 from taskify.profileApp.forms import UserCreateForm, UserLoginForm, UserProfileEditForm
 from taskify.profileApp.models import UserProfile
 
@@ -47,29 +48,31 @@ class CustomLogoutView(LoginRequiredMixin, LogoutView):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        # Perform the logout if the user confirms
         if 'confirm-logout' in request.POST:
             return super().post(request, *args, **kwargs)
 
         return redirect('dashboard')
 
 
-class UserProfileEdit(LoginRequiredMixin, UpdateView):
+class UserProfileEdit(LoginRequiredMixin, UserOwnershipMixin, UpdateView):
     model = UserProfile
     form_class = UserProfileEditForm
     template_name = 'profile/edit_profile.html'
+    user_obj = 'user'
 
     def get_success_url(self):
         return reverse_lazy('details_user_profile', kwargs={'pk': self.object.user.id})
 
 
-class UserProfileDetails(LoginRequiredMixin, DetailView):
+class UserProfileDetails(LoginRequiredMixin, UserOwnershipMixin, DetailView):
     model = UserProfile
     template_name = 'profile/details_profile.html'
     context_object_name = 'user_profile'
+    user_obj = 'user'
 
 
-class UserProfileDelete(LoginRequiredMixin, DeleteView):
+class UserProfileDelete(LoginRequiredMixin, UserOwnershipMixin, DeleteView):
     model = UserModel
     template_name = 'profile/delete_profile.html'
     success_url = reverse_lazy('index')
+    user_obj = 'username'

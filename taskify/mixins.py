@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import AccessMixin
+from django.http import Http404
 from django.shortcuts import redirect
 
 
@@ -12,3 +13,22 @@ class AnonymousRequiredMixin(AccessMixin):
         if self.request.user.is_authenticated:
             return redirect('dashboard')
         return super().handle_no_permission()
+
+
+class UserOwnershipMixin:
+    """
+    Mixin to check if the user owns the object.
+    Raises 404 if the user is not the owner.
+    """
+
+    user_obj = ''
+
+    def check_user_ownership(self, obj):
+        user = getattr(obj, self.user_obj)
+        if str(user) != str(self.request.user):
+            raise Http404
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset=queryset)
+        self.check_user_ownership(obj)
+        return obj
