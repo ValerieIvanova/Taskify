@@ -23,15 +23,15 @@ class RegisterView(AnonymousRequiredMixin, CreateView):
         login(self.request, self.object)
         return result
 
-    def get(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect('dashboard')
-        return super(RegisterView, self).get(*args, **kwargs)
+    # def get(self, *args, **kwargs):
+    #     if self.request.user.is_authenticated:
+    #         return redirect('dashboard')
+    #     return super(RegisterView, self).get(*args, **kwargs)
 
 
 class CustomLoginView(AnonymousRequiredMixin, LoginView):
     template_name = 'profile/custom_login.html'
-    redirect_authenticated_user = True
+    # redirect_authenticated_user = True
     form_class = UserLoginForm
     success_url = reverse_lazy('dashboard')
 

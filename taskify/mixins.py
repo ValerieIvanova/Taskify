@@ -11,11 +11,11 @@ class AnonymousRequiredMixin(AccessMixin):
     Redirects authenticated users to the Dashboard page.
     """
 
-    def handle_no_permission(self):
-        if self.request.user.is_authenticated:
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
             return redirect('dashboard')
-        return super().handle_no_permission()
-
+        return super().dispatch(request, *args, **kwargs)
+    
 
 class UserOwnershipMixin:
     """
