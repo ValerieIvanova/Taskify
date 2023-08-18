@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             end: 'dayGridMonth listWeek timeGridWeek timeGridDay',
         },
         initialView: 'dayGridMonth', // Set the initial view to dayGridMonth (month view)
-        selectable: true, // Enable date selection
+        selectable: true,
         dateClick: function (info) {
             let selectedDate = info.dateStr;
             if (selectedDate < today()) {

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch(`/tasks/mark_task_completed/${taskId}/`, {
                 method: 'POST',
                 headers: {
-                    'X-CSRFToken': getCookie('csrftoken'),  // Replace with your CSRF token retrieval method
+                    'X-CSRFToken': getCookie('csrftoken'),
                 },
             });
             const data = await response.json();

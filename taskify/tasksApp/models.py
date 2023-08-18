@@ -18,7 +18,7 @@ class Category(models.Model):
         max_length=NAME_MAX_LENGTH,
         null=False,
         blank=False,
-    )
+    )  # 0001_initial.py
 
     color = ColorField(
         default='#FFFFFF',
@@ -41,7 +41,7 @@ class TaskStatus(models.Model):
         null=False,
         blank=False,
         default='Not Started'
-    )
+    )  # 0001_initial.py
 
     def __str__(self):
         return self.status
